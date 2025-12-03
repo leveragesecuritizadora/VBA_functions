@@ -1,4 +1,4 @@
-Attribute VB_Name = "Recebimentos"
+Attribute VB_Name = "teste"
 Function PreencheRecebimento( _
     Optional unidade As String = "Unidade", _
     Optional tipo_recebimento As String = "total", _
@@ -10,10 +10,10 @@ Function PreencheRecebimento( _
 ) As Variant
 
     Dim wb As Workbook
-    Set wb = Workbooks.Open("https://leveragesec-my.sharepoint.com/personal/caique_leveragesec_com_br/Documents/Dados_Emissoes.xlsx?web=1")
+    Set wb = Workbooks.Open("C:\Users\Caique\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\planilhas\Dados_Emissoes.xlsx")
 
     Dim ws As Worksheet
-    Set ws = wb.Sheets("Dados")
+    Set ws = wb.Sheets("Recebimentos")
 
     MsgBox ws.Range("A1").Value
     

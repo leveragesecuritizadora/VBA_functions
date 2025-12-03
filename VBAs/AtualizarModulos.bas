@@ -6,7 +6,7 @@ Sub AtualizarModulos()
     Dim vbComp As Object
     
     ' Caminho da sua pasta de módulos (repositório local)
-    caminhoPasta = "C:\Users\Caique\repos\VBA_functions\"
+    caminhoPasta = "C:\Users\Caique\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\VBAs\"
 
     ' ================================
     ' 1. REMOVER módulos antigos (.bas)
