@@ -19,8 +19,8 @@ Function BuscarLinha( _
     If IsError(linhaEncontrada) Then
         Dim diaHora As Date
         diaHora = Now()
-        Debug.Print diaHora & " - BuscarLInha: Celula com identificador (" & id & ") não encontrada em " & planilha 
-        BuscarLinha = "Não encontrado"
+        Debug.Print diaHora & " - BuscarLinha: Celula com identificador (" & id & ") não encontrada em " & planilha 
+        BuscarLinha = False
         Exit Function
     End If
 

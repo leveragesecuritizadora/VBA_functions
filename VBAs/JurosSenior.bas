@@ -7,7 +7,7 @@ Public Function PreencherJurosSenior( _
     Dim wsAtual As Worksheet
     Dim celAtual As Range
     Dim stringBusca As String
-    Dim dataBase As Date
+    Dim dataBase As Variant
     Dim emissao As String
     Dim resultado As Variant
     
@@ -18,9 +18,16 @@ Public Function PreencherJurosSenior( _
     Set celAtual = Application.Caller
     Set wsAtual = celAtual.Parent
 
-    dataBase = wsAtual.Cells(celAtual.Row, coluna_data).Value
+    ' Debug.Print "R" & celAtual.Row
+    ' Debug.Print "C" & celAtual.Column
 
-    If Not (dataBase) Then
+    dataBase = VerificaDataEOffset(wsAtual.Cells(celAtual.Row, coluna_data).Value, mes_offset)
+
+    Debug.Print "R" & dataBase
+
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherJurosSenior: dataBase: "& dataBase
+
+    If dataBase = False Then
         PreencherJurosSenior = "Erro data"
         Exit Function
     End If
@@ -34,13 +41,12 @@ Public Function PreencherJurosSenior( _
     ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
 
 
-    If resultado = "Não encontrado" Then
+    If resultado = False Then
         PreencherJurosSenior = 0
         Exit Function
     End If
 
     PreencherJurosSenior = resultado
-    Exit Function
 
 End Function
 
