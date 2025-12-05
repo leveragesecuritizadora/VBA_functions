@@ -38,8 +38,8 @@ Function PreencherRecebimentosAdiantados( _
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - " & Unidade
     resultado = BuscarLinha("Recebimentos", 2, stringBusca)
 
-    Debug.Print "Preencher R. Adiantados - busca: "; stringBusca
-    Debug.Print "Preencher R. Adiantados - resultado: "; BuscarLinha("Recebimentos", 3, stringBusca)
+    ' Debug.Print "Preencher R. Adiantados - busca: "; stringBusca
+    ' Debug.Print "Preencher R. Adiantados - resultado: "; BuscarLinha("Recebimentos", 3, stringBusca)
 
 
     If resultado = False Then

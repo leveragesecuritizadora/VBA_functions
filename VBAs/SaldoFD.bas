@@ -1,98 +1,53 @@
 Attribute VB_Name = "SaldoFD"
-Function PreencheSaldoFD( _
-    Optional dado_historico As Variant, _
-    Optional mes_desejado As Variant = False, _
+Function PreencherSaldoFD( _
     Optional mes_offset As Integer = -1, _
-    Optional place_holder As Variant = "-", _
-    Optional nome_fonte As String = "SaldoFD" _
+    Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    Dim wsBDconnected As Worksheet
     Dim wsAtual As Worksheet
     Dim celAtual As Range
-    Dim dataBusca As String
-    Dim linhaEncontrada As Variant
-    Dim dataBase As Date
-    Dim timestamp As String
-    Dim colunaInfo As Integer
+    Dim stringBusca As String
+    Dim dataBase As Variant
+    Dim emissao As String
+    Dim resultado As Variant
 
-    ' Gera timestamp para log
-    timestamp = Format(Now, "dd/mm/yyyy HH:nn:ss")
-
-    
-    On Error GoTo ErroHandler
-
-    ' Atualiza a cada mudanaa
+    ' att aut das celulas a cada mudanca
     Application.Volatile True
-
-    ' --- [1] Verifica se a planilha fonte existe ---
-    On Error Resume Next
-
-    Set wsBDconnected = ThisWorkbook.Sheets(nome_fonte)
-    Err.Clear
-    
-    On Error GoTo ErroHandler
-    If wsBDconnected Is Nothing Then
-        PreencheSaldoFD = "Erro: Tabela '" & nome_fonte & "' n�o existe"
-        ' Debug.Print "[" & timestamp & "] Erro: Tabela '" & nome_fonte & "' n�o existe"
-        Exit Function
-    End If
     
     ' --- [2] Define contexto atual ---
     Set celAtual = Application.Caller
     Set wsAtual = celAtual.Parent
 
-    ' --- [3] Verifica se a c_lula da coluna B cont_m uma data ---
-    If IsDate(wsAtual.Cells(celAtual.Row, 2).Value) Then
-        dataBase = CDate(wsAtual.Cells(celAtual.Row, 2).Value)
-    Else
-        PreencheSaldoFD = "Erro: c_lula B" & celAtual.Row & " n�o cont_m uma data v�lida"
-        Exit Function
-    End If
+    ' Debug.Print "R" & celAtual.Row
+    ' Debug.Print "C" & celAtual.Column
 
-    ' --- [4] Verifica se o deslocamento de ms est� dentro do intervalo ----
-    If mes_offset < -12 Or mes_offset > 12 Then
-        PreencheSaldoFD = "Erro: mes_offset fora do intervalo (-12 a 12)"
-        ' Debug.Print "[" & timestamp & "] Erro: mes_offset fora do intervalo (-12 a 12)"
+    dataBase = VerificaDataEOffset(wsAtual.Cells(celAtual.Row, coluna_data).Value, mes_offset)
+
+    ' Debug.Print "R" & dataBase
+
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherSaldoFD: dataBase: "& dataBase
+
+    If dataBase = False Then
+        PreencherSaldoFD = "Erro data"
         Exit Function
     End If
+    
     ' --- [5] Monta a string de busca ---
-    dataBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy")
-    ' Debug.Print "chegue 8.1"
-    ' Debug.Print dataBusca
-    
-    ' --- [6] Busca o valor na planilha fonte ---
-    linhaEncontrada = Application.Match(dataBusca, wsBDconnected.Range("B:B"), 0)
-    ' Debug.Print "chegue 9: "
-    ' Debug.Print linhaEncontrada
-    
-    If Not IsMissing(dado_historico) Then
-        If Not IsEmpty(dado_historico) And dado_historico <> "" Then
-            PreencheSaldoFD = dado_historico
-            Exit Function
-        End If
+    emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
+    stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao
+    resultado = BuscarLinha("SaldoFD", 2, stringBusca)
+
+    ' Debug.Print "Preencher saldoFR - busca: "; stringBusca
+    ' Debug.Print "Preencher saldoFR - resultado: "; BuscarLinha("SaldoFD", 2, stringBusca)
+
+
+    If resultado = False Then
+        PreencherSaldoFD = 0
+        Exit Function
     End If
-    
-    ' --- [7] Define a coluna de retorno (corrigir se necess�rio) ---
-    colunaInfo = 3  ' <--- ajuste aqui se for outra coluna
-    
-    ' --- [8] Retorna o valor encontrado ---
-    PreencheSaldoFD = wsBDconnected.Cells(linhaEncontrada, colunaInfo).Value
-    ' Debug.Print "SalMinFR"
-    ' Debug.Print "[" & timestamp & "] Busca: " & dataBusca
-    ' Debug.Print "[" & timestamp & "] Linha encontrada: " & linhaEncontrada
-    ' Debug.Print "[" & timestamp & "] Valor retornado (" & wsBDconnected.Cells(linhaEncontrada, colunaInfo).Address & "): " & wsBDconnected.Cells(linhaEncontrada, colunaInfo).Value
 
-    Exit Function
+    PreencherSaldoFD = resultado
+    ' PreencherSaldoFD = "OK"
 
-' --- [9] Tratamento gen_rico de erro inesperado ---
-ErroHandler:
-    PreencheSaldoFD = place_holder
-    ' Call LogErroUDF("ERRO em PreencheSaldoFD: " & Err.Description)
+
 End Function
-
-
-Sub LogErroUDF(msg As String)
-    ' Debug.Print msg
-End Sub
-
