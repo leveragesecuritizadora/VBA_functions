@@ -1,5 +1,5 @@
-Attribute VB_Name = "JurosSenior"
-Public Function PreencherJurosSenior( _
+Attribute VB_Name = "AmortizacaoSeniorOrdinaria"
+Public Function PreencherAmortizacaoSeniorOrdinaria( _
     Optional mes_offset As Integer = -1, _
     Optional coluna_data As Integer = 2 _
 ) As Variant
@@ -25,33 +25,27 @@ Public Function PreencherJurosSenior( _
 
     ' Debug.Print "R" & dataBase
 
-    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherJurosSenior: dataBase: "& dataBase
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherAmortizacaoSeniorOrdinaria: dataBase: "& dataBase
 
     If dataBase = False Then
-        PreencherJurosSenior = "Erro data"
+        PreencherAmortizacaoSeniorOrdinaria = "Erro data"
         Exit Function
     End If
     
     ' --- [5] Monta a string de busca ---
     emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - senior"
-    resultado = BuscarLinha("Juros", 3, stringBusca)
+    resultado = BuscarLinha("Juros", 5, stringBusca)
 
     ' Debug.Print "Preencher jS - busca: "; stringBusca
     ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
 
 
     If resultado = False Then
-        PreencherJurosSenior = 0
+        PreencherAmortizacaoSeniorOrdinaria = 0
         Exit Function
     End If
 
-    PreencherJurosSenior = resultado
+    PreencherAmortizacaoSeniorOrdinaria = resultado
 
 End Function
-
-
-
-
-
-
