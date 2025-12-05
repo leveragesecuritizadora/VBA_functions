@@ -4,8 +4,8 @@ Function VerificaDataEOffset( _
     offset As Variant _
 ) As Variant
 
-    Debug.Print Now() & " - FVerificaDataEOffset: Data " & data
-    Debug.Print Now() & " - FVerificaDataEOffset: offset " & offset
+    ' Debug.Print Now() & " - FVerificaDataEOffset: Data " & data
+    ' Debug.Print Now() & " - FVerificaDataEOffset: offset " & offset
 
     ' --- [3] verifica se a coluna especificada contem uma data ---
     If Not IsDate(data) Then
@@ -22,5 +22,5 @@ Function VerificaDataEOffset( _
     End If
 
     VerificaDataEOffset = CDate(data)
-    Debug.Print Now() & " - FVerificaDataEOffset: Resultado " & VerificaDataEOffset
+    ' Debug.Print Now() & " - FVerificaDataEOffset: Resultado " & VerificaDataEOffset
 End Function
