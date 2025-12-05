@@ -28,6 +28,6 @@ Sub AtualizarModulos()
         arquivo = Dir
     Loop
 
-    MsgBox "Módulos atualizados com sucesso a partir do repositório!", vbInformation
+    Debug.Print "Módulos atualizados com sucesso a partir do repositório!", vbInformation
 
 End Sub

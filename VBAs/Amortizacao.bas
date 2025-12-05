@@ -27,7 +27,7 @@ Function PreencheAmortizacao( _
     ElseIf Left(tipo_serie, 11) = "subordinada" Then
         tipo_serie = "subordinada"
     Else
-        PreencheAmortizacao = "Erro: S_rie '" & tipo_serie & "' nÔøΩo existe"
+        PreencheAmortizacao = "Erro: S_rie '" & tipo_serie & "' nùo existe"
         Exit Function
     End If
 
@@ -38,7 +38,7 @@ Function PreencheAmortizacao( _
     Set wsJuros = ThisWorkbook.Sheets(nome_fonte)
     On Error GoTo ErroHandler
     If wsJuros Is Nothing Then
-        PreencheAmortizacao = "Erro: Tabela '" & nome_fonte & "' nÔøΩo existe"
+        PreencheAmortizacao = "Erro: Tabela '" & nome_fonte & "' nùo existe"
         Exit Function
     End If
     
@@ -50,11 +50,11 @@ Function PreencheAmortizacao( _
     If IsDate(wsAtual.Cells(celAtual.Row, 2).Value) Then
         dataBase = CDate(wsAtual.Cells(celAtual.Row, 2).Value)
     Else
-        PreencheAmortizacao = "Erro: c_lula B" & celAtual.Row & " nÔøΩo cont_m uma data vÔøΩlida"
+        PreencheAmortizacao = "Erro: c_lula B" & celAtual.Row & " nùo cont_m uma data vùlida"
         Exit Function
     End If
 
-    ' --- [4] Verifica se o deslocamento de ms estÔøΩ dentro do intervalo ----
+    ' --- [4] Verifica se o deslocamento de ms estù dentro do intervalo ----
     If mes_offset < -12 Or mes_offset > 12 Then
         PreencheAmortizacao = "Erro: mes_offset fora do intervalo (-12 a 12)"
         Exit Function
@@ -63,9 +63,9 @@ Function PreencheAmortizacao( _
     ' --- [5] Monta a string de busca ---
     dataBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & tipo_serie
     
-    ' --- [7] Verifica se a coluna pedida _ vÔøΩlida ---
+    ' --- [7] Verifica se a coluna pedida _ vùlida ---
     If coluna_amortizacao < 1 Or coluna_amortizacao > wsJuros.Columns.Count Then
-        PreencheAmortizacao = "Erro: coluna_amortizacao invÔøΩlida (" & coluna_amortizacao & ")"
+        PreencheAmortizacao = "Erro: coluna_amortizacao invùlida (" & coluna_amortizacao & ")"
         Exit Function
     End If
     
