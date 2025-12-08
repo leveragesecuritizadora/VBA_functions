@@ -1,0 +1,27 @@
+= Sql.Database("sqlserver-emissions-prod.database.windows.net", "sqldb-emissions-dw-prod", [Query="
+SELECT
+    FORMAT(
+    CONVERT(date, LEFT(saldo.relatorio_id, 4) + RIGHT(saldo.relatorio_id, 2) + '01'),
+        'dd/MM/yyyy'
+    ) + ' - ' +
+    nome_emissao.nome AS 'Identificador',
+    saldo.valor_decimal as saldoFR
+FROM (
+	SELECT 
+		*
+	FROM
+		DW.Fato
+	WHERE
+		dim_fato_id = 6
+		AND dim_indicador_id = 5
+) AS saldo
+JOIN (
+    SELECT 
+	    dim_emissao_id,
+	    SUBSTRING(emissao_nome, CHARINDEX(' ', emissao_nome) + 1, LEN(emissao_nome)) AS nome
+    FROM 
+	    DW.DimEmissao
+) AS nome_emissao
+ON 
+    saldo.dim_emissao_id = nome_emissao.dim_emissao_id
+"])
