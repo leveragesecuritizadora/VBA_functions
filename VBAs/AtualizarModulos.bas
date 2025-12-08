@@ -28,6 +28,9 @@ Sub AtualizarModulos()
         arquivo = Dir
     Loop
 
-    Debug.Print "Módulos atualizados com sucesso a partir do repositório!", vbInformation
+    
+    Application.SendKeys "^g ^t {DEL}"   
+
+    Debug.Print "Módulos atualizados com sucesso a partir do repositório janela limpa!", vbInformation
 
 End Sub
