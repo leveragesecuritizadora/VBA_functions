@@ -17,7 +17,7 @@ Function SomaValores( _
 
     For Each cel In planilhaDados.Range("A:A")
         If cel.Value Like id & "*" Then
-            somador += planilhaDados.Cells(cel.Row, coluna_buscar).Value
+            somador = somador + planilhaDados.Cells(cel.Row, coluna_buscar).Value
             Exit For
         End If
     Next cel
