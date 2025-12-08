@@ -37,8 +37,8 @@ Function PreencherRecebimentosAdiantadosTU( _
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao
     resultado = SomaValores("Recebimentos", 2, stringBusca)
 
-    Debug.Print "Preencher R. EmDia - busca: "; stringBusca
-    Debug.Print "Preencher R. EmDia - resultado: "; BuscarLinha("Recebimentos", 2, stringBusca)
+    ' Debug.Print "Preencher R. EmDia - busca: "; stringBusca
+    ' Debug.Print "Preencher R. EmDia - resultado: "; BuscarLinha("Recebimentos", 2, stringBusca)
 
 
     If resultado = False Then
