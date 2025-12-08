@@ -1,5 +1,5 @@
-Attribute VB_Name = "RecebimentosTotaisTU"
-Function PreencherRecebimentosTotaisTU( _
+Attribute VB_Name = "RecebimentosEmDiaTU"
+Function PreencherRecebimentosEmDiaTU( _
     Optional mes_offset As Integer = -1, _
     Optional coluna_data As Variant = 2 _
 ) As Variant
@@ -25,27 +25,27 @@ Function PreencherRecebimentosTotaisTU( _
 
     ' Debug.Print "R" & dataBase
 
-    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosTotaisTU: dataBase: "& dataBase
+    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosEmDiaTU: dataBase: "& dataBase
 
     If dataBase = False Then
-        PreencherRecebimentosTotaisTU = "Erro data"
+        PreencherRecebimentosEmDiaTU = "Erro data"
         Exit Function
     End If
     
     ' --- [5] Monta a string de busca ---
     emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao
-    resultado = SomaValores("Recebimentos", 5, stringBusca)
+    resultado = SomaValores("Recebimentos", 4, stringBusca)
 
     Debug.Print "Preencher R. EmDia - busca: "; stringBusca
-    Debug.Print "Preencher R. EmDia - resultado: "; BuscarLinha("Recebimentos", 3, stringBusca)
+    Debug.Print "Preencher R. EmDia - resultado: "; BuscarLinha("Recebimentos", 4, stringBusca)
 
 
     If resultado = False Then
-        PreencherRecebimentosTotaisTU = 0
+        PreencherRecebimentosEmDiaTU = 0
         Exit Function
     End If
 
-    PreencherRecebimentosTotaisTU = resultado
+    PreencherRecebimentosEmDiaTU = resultado
 
 End Function
