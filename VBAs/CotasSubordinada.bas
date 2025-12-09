@@ -1,5 +1,5 @@
-Attribute VB_Name = "CotasDiaAnteriorSenior"
-Function PreencherCotasSenior( _
+Attribute VB_Name = "CotasSubordinada"
+Function PreencherCotasSubordinada( _
     Optional mes_offset As Integer = -1, _
     Optional coluna_data As Integer = 2 _
 ) As Variant
@@ -25,16 +25,16 @@ Function PreencherCotasSenior( _
 
     ' Debug.Print "R. cotas - Linha" & dataBase
 
-    ' Debug.Print Now() & "R. cotas - coluna: : "& celAtual.Column & celAtual.Row & " - PreencherCotasSenior: dataBase: "& dataBase
+    ' Debug.Print Now() & "R. cotas - coluna: : "& celAtual.Column & celAtual.Row & " - PreencherCotasSubordinada: dataBase: "& dataBase
 
     If dataBase = False Then
-        PreencherCotasSenior = "Erro data"
+        PreencherCotasSubordinada = "Erro data"
         Exit Function
     End If
     
     ' --- [5] Monta a string de busca ---
     emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
-    stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - senior"
+    stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - subordinada"
     resultado = BuscarLinha("Juros", 2, stringBusca)
 
     ' Debug.Print "Preencher cotas - busca: "; stringBusca
@@ -42,10 +42,10 @@ Function PreencherCotasSenior( _
 
 
     If resultado = False Then
-        PreencherCotasSenior = 0
+        PreencherCotasSubordinada = 0
         Exit Function
     End If
 
-    PreencherCotasSenior = resultado
+    PreencherCotasSubordinada = resultado
 
 End Function
