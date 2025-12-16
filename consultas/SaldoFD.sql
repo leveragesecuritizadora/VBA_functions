@@ -4,7 +4,7 @@ SELECT
         'dd/MM/yyyy'
     ) + ' - ' +
     nome_emissao.nome AS 'Identificador',
-    saldo.valor_decimal as saldoFR
+    saldo.valor_decimal as saldoFD
 FROM (
 	SELECT 
 		*
