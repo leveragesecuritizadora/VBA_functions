@@ -25,7 +25,7 @@ Function PreencherRecebimentosEmDiaTU( _
 
     ' Debug.Print "R" & dataBase
 
-    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosEmDiaTU: dataBase: "& dataBase
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosEmDiaTU: dataBase: "& dataBase
 
     If dataBase = False Then
         PreencherRecebimentosEmDiaTU = "Erro data"

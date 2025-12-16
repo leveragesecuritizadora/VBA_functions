@@ -14,7 +14,7 @@ Public Function PreencherPMTSenior( _
     ' Verificacao para PMTs futuras
     If Not (mes_offset = -1) Then
         mes_offset = mes_offset - 1
-        Debug.Print "PreencherPMTSenior - offset transformado: "; mes_offset
+        ' Debug.Print "PreencherPMTSenior - offset transformado: "; mes_offset
     End If
     
     ' att aut das celulas a cada mudanca

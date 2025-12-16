@@ -25,7 +25,7 @@ Function PreencherRecebimentosAdiantadosTU( _
 
     ' Debug.Print "R" & dataBase
 
-    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosAdiantadosTU: dataBase: "& dataBase
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosAdiantadosTU: dataBase: "& dataBase
 
     If dataBase = False Then
         PreencherRecebimentosAdiantadosTU = "Erro data"

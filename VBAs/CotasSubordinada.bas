@@ -42,7 +42,7 @@ Function PreencherCotasSubordinada( _
 
 
     If resultado = False Then
-        PreencherCotasSubordinada = 0
+        PreencherCotasSubordinada = 1
         Exit Function
     End If
 

@@ -42,7 +42,7 @@ Function PreencherCotasSenior( _
 
 
     If resultado = False Then
-        PreencherCotasSenior = 0
+        PreencherCotasSenior = 1
         Exit Function
     End If
 

@@ -25,7 +25,7 @@ Function PreencherRecebimentosTotaisTU( _
 
     ' Debug.Print "R" & dataBase
 
-    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosTotaisTU: dataBase: "& dataBase
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosTotaisTU: dataBase: "& dataBase
 
     If dataBase = False Then
         PreencherRecebimentosTotaisTU = "Erro data"

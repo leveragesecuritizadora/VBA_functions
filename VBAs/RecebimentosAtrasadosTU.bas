@@ -25,7 +25,7 @@ Function PreencherRecebimentosAtrasadosTU( _
 
     ' Debug.Print "R" & dataBase
 
-    Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosAtrasadosTU: dataBase: "& dataBase
+    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherRecebimentosAtrasadosTU: dataBase: "& dataBase
 
     If dataBase = False Then
         PreencherRecebimentosAtrasadosTU = "Erro data"

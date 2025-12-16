@@ -93,6 +93,6 @@ End Function
 
 
 Sub LogErroUDF(msg As String)
-    Debug.Print msg
+    ' Debug.Print msg
 End Sub
 

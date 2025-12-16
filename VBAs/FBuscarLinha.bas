@@ -21,7 +21,7 @@ Function BuscarLinha( _
         If log Then
             Dim diaHora As Date
             diaHora = Now()
-            Debug.Print diaHora & " - BuscarLinha: Celula com identificador (" & id & ") não encontrada em " & planilha 
+            ' Debug.Print diaHora & " - BuscarLinha: Celula com identificador (" & id & ") não encontrada em " & planilha 
         End If
         BuscarLinha = False
         Exit Function

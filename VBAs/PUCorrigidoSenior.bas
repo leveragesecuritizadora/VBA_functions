@@ -35,10 +35,10 @@ Public Function PreencherPUCorrigidoSenior( _
     ' --- [5] Monta a string de busca ---
     emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - senior"
-    resultado = BuscarLinha("PUCorrigido", 3, stringBusca)
+    resultado = BuscarLinha("PUCorrigido", 4, stringBusca)
 
     ' Debug.Print "Preencher jS - busca: "; stringBusca
-    ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("PUCorrigido", 3, stringBusca)
+    ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("PUCorrigido", 4, stringBusca)
 
 
     If resultado = False Then
