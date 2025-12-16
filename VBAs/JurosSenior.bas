@@ -10,6 +10,7 @@ Public Function PreencherJurosSenior( _
     Dim dataBase As Variant
     Dim emissao As String
     Dim resultado As Variant
+    Dim nomePlanilha As String
     
     ' att aut das celulas a cada mudanca
     Application.Volatile True
@@ -33,12 +34,17 @@ Public Function PreencherJurosSenior( _
     End If
     
     ' --- [5] Monta a string de busca ---
-    emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
+    nomePlanilha = Application.Caller.Parent.Parent.Name
+
+    emissao = nomePlanilha
+    emissao = Replace(emissao, "CRI ", "")
+    emissao = Replace(emissao, " - Cascata.Automatizada.VBA.xlsm", "")
+
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - senior"
     resultado = BuscarLinha("Juros", 3, stringBusca)
 
-    ' Debug.Print "Preencher jS - busca: "; stringBusca
-    ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
+    Debug.Print "Preencher jS - busca: "; stringBusca
+    Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
 
 
     If resultado = False Then

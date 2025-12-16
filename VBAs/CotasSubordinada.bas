@@ -33,7 +33,12 @@ Function PreencherCotasSubordinada( _
     End If
     
     ' --- [5] Monta a string de busca ---
-    emissao = Split(Application.Caller.Parent.Parent.Name, " ")(1)
+    Dim nomePlanilha As String
+    nomePlanilha = Application.Caller.Parent.Parent.Name
+
+    emissao = nomePlanilha
+    emissao = Replace(emissao, "CRI ", "")
+    emissao = Replace(emissao, " - Cascata.Automatizada.VBA.xlsm", "")
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - subordinada"
     resultado = BuscarLinha("Juros", 2, stringBusca)
 
@@ -42,7 +47,7 @@ Function PreencherCotasSubordinada( _
 
 
     If resultado = False Then
-        PreencherCotasSubordinada = 1
+        PreencherCotasSubordinada = 0
         Exit Function
     End If
 
