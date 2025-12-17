@@ -1,5 +1,5 @@
-Attribute VB_Name = "SAtualizarTabela"
-Sub AtualizarTabela()
+Attribute VB_Name = "SAtualizarTabelas"
+Sub AtualizarTabelas()
 
     Dim conn As Object
     Dim rs As Object
@@ -33,6 +33,9 @@ Sub AtualizarTabela()
         ' 1. Planilha
         Set ws = GetOrCreateSheet(nomeBase)
 
+        ' 1.1 Cor da aba
+        ws.Tab.Color = RGB(139, 0, 0)
+
         ' 2. SQL
         sql = LerArquivoTexto(pastaSQL & arquivo)
 
@@ -43,13 +46,16 @@ Sub AtualizarTabela()
         ' 4. Tabela
         Set tbl = GetOrCreateTable(ws, nomeBase)
 
-        ' 5. Limpa dados antigos
+        ' 5. Limpa apenas os dados
         If Not tbl.DataBodyRange Is Nothing Then
             tbl.DataBodyRange.ClearContents
         End If
 
-        ' 6. Preenche
-        tbl.Range(2, 1).CopyFromRecordset rs
+        ' 6. Cabeçalhos vindos do SQL
+        CabecalhoDaConsulta ws, tbl.Range.Cells(1, 1), rs
+
+        ' 7. Dados
+        tbl.Range.Cells(2, 1).CopyFromRecordset rs
 
         rs.Close
         arquivo = Dir
