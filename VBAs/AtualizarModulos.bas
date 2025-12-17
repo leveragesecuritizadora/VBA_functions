@@ -29,7 +29,7 @@ Sub AtualizarModulos()
     Loop
 
     
-    Application.SendKeys "^g ^t {DEL}"   
+    ' Application.SendKeys "^g ^t {DEL}"   
 
     ' Debug.Print "Módulos atualizados com sucesso a partir do repositório janela limpa!", vbInformation
 

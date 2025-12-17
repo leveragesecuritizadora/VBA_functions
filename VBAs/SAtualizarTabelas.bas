@@ -36,6 +36,9 @@ Sub AtualizarTabelas()
         ' 1.1 Cor da aba
         ws.Tab.Color = RGB(139, 0, 0)
 
+        ' 1.2 Ocultando planilhas criadas
+        ws.Visible = xlSheetHidden
+
         ' 2. SQL
         sql = LerArquivoTexto(pastaSQL & arquivo)
 

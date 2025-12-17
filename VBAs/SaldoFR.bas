@@ -4,55 +4,8 @@ Function PreencherSaldoFR( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    Dim wsAtual As Worksheet
-    Dim celAtual As Range
-    Dim stringBusca As String
-    Dim dataBase As Variant
-    Dim emissao As String
-    Dim resultado As Variant
+    PreencherSaldoFR = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFR", 2)
 
-    ' att aut das celulas a cada mudanca
-    Application.Volatile True
-    
-    ' --- [2] Define contexto atual ---
-    Set celAtual = Application.Caller
-    Set wsAtual = celAtual.Parent
-
-    ' Debug.Print "R" & celAtual.Row
-    ' Debug.Print "C" & celAtual.Column
-
-    dataBase = VerificaDataEOffset(wsAtual.Cells(celAtual.Row, coluna_data).Value, mes_offset)
-
-    ' Debug.Print "R" & dataBase
-
-    ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - PreencherSaldoFR: dataBase: "& dataBase
-
-    If dataBase = False Then
-        PreencherSaldoFR = "Erro data"
-        Exit Function
-    End If
-    
-    ' --- [5] Monta a string de busca ---
-    Dim nomePlanilha As String
-    nomePlanilha = Application.Caller.Parent.Parent.Name
-
-    emissao = nomePlanilha
-    emissao = Replace(emissao, "CRI ", "")
-    emissao = Replace(emissao, " - Cascata.Automatizada.VBA.xlsm", "")
-    stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao
-    resultado = BuscarLinha("SaldoFR", 2, stringBusca)
-
-    ' Debug.Print "Preencher saldoFR - busca: "; stringBusca
-    ' Debug.Print "Preencher saldoFR - resultado: "; BuscarLinha("SaldoFR", 2, stringBusca)
-
-
-    If resultado = False Then
-        PreencherSaldoFR = 0
-        Exit Function
-    End If
-
-    PreencherSaldoFR = resultado
-    ' PreencherSaldoFR = "OK"
 
 
 End Function

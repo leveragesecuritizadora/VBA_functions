@@ -42,8 +42,8 @@ Function PreencherRecebimentosTotaisTU( _
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao
     resultado = SomaValores("Recebimentos", 5, stringBusca)
 
-    Debug.Print "Preencher R. totais - busca: "; stringBusca
-    Debug.Print "Preencher R. totais - resultado: "; SomaValores("Recebimentos", 5, stringBusca)
+    ' Debug.Print "Preencher R. totais - busca: "; stringBusca
+    ' Debug.Print "Preencher R. totais - resultado: "; SomaValores("Recebimentos", 5, stringBusca)
 
 
     If resultado = False Then

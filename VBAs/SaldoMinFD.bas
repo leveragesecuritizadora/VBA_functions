@@ -1,0 +1,9 @@
+Attribute VB_Name = "SaldoMinFD"
+Function PreencherSaldoMinFD( _
+    Optional mes_offset As Integer = -1, _
+    Optional coluna_data As Integer = 2 _
+) As Variant
+
+    PreencherSaldoMinFD = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFD", 3)
+
+End Function

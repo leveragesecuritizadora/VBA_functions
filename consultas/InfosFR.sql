@@ -4,16 +4,29 @@ SELECT
         'dd/MM/yyyy'
     ) + ' - ' +
     nome_emissao.nome AS 'Identificador',
-    saldo.valor_decimal as saldoFD
+    saldo.valor_decimal as SaldoFR,
+	saldo_min.valor_decimal as SaldoMinFR
 FROM (
 	SELECT 
 		*
 	FROM
 		DW.Fato
 	WHERE
-		dim_fato_id = 15
+		dim_fato_id = 6
 		AND dim_indicador_id = 5
 ) AS saldo
+JOIN (
+	SELECT 
+		*
+	FROM
+		DW.Fato
+	WHERE
+		dim_fato_id = 14
+		AND dim_indicador_id = 1
+) AS saldo_min
+ON 
+	saldo.dim_emissao_id = saldo_min.dim_emissao_id
+	AND saldo.relatorio_id = saldo_min.relatorio_id
 JOIN (
     SELECT 
 	    dim_emissao_id,
