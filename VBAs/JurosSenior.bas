@@ -43,8 +43,8 @@ Public Function PreencherJurosSenior( _
     stringBusca = Format(DateSerial(Year(dataBase), Month(dataBase) + mes_offset, 1), "dd/mm/yyyy") & " - " & emissao & " - senior"
     resultado = BuscarLinha("Juros", 3, stringBusca)
 
-    Debug.Print "Preencher jS - busca: "; stringBusca
-    Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
+    ' Debug.Print "Preencher jS - busca: "; stringBusca
+    ' Debug.Print "Preencher jS - resultado: "; BuscarLinha("Juros", 3, stringBusca)
 
 
     If resultado = False Then

@@ -1,5 +1,5 @@
-Attribute VB_Name = "SAtualizarModulos"
-Sub AtualizarModulos()
+Attribute VB_Name = "SApagarModulos"
+Sub ApagarModulos()
 
     Dim caminhoPasta As String
     Dim arquivo As String
@@ -16,21 +16,4 @@ Sub AtualizarModulos()
             ThisWorkbook.VBProject.VBComponents.Remove vbComp
         End If
     Next vbComp
-
-
-    ' ================================
-    ' 2. IMPORTAR todos os .bas
-    ' ================================
-    arquivo = Dir(caminhoPasta & "*.bas")
-
-    Do While arquivo <> ""
-        ThisWorkbook.VBProject.VBComponents.Import caminhoPasta & arquivo
-        arquivo = Dir
-    Loop
-
-    
-    Application.SendKeys "^g ^t {DEL}"   
-
-    ' Debug.Print "Módulos atualizados com sucesso a partir do repositório janela limpa!", vbInformation
-
 End Sub
