@@ -1,10 +1,10 @@
 Attribute VB_Name = "FImplementacaoBuscarInfosEmissao"
 Function ImplementacaoBuscarInfosEmissao( _
-    mes_offset As Integer, _
+    mes_offset As Variant, _
     coluna_data As Integer, _
     planilha_dados As String, _
     coluna_dados As Integer, _
-    Optional nome_unidade As String = "" _ 
+    Optional sufixo_busca As String = "" _ 
 ) As Variant
 
     Dim wsAtual As Worksheet
@@ -13,7 +13,7 @@ Function ImplementacaoBuscarInfosEmissao( _
     Dim dataBase As Variant
     Dim emissao As String
     Dim resultado As Variant
-
+    Debug.Print "aaaaa"
     ' att aut das celulas a cada mudanca
     Application.Volatile True
     
@@ -26,7 +26,7 @@ Function ImplementacaoBuscarInfosEmissao( _
 
     dataBase = VerificaDataEOffset(wsAtual.Cells(celAtual.Row, coluna_data).Value, mes_offset)
 
-    Debug.Print "R" & dataBase
+    Debug.Print "Data Cascata" & dataBase
 
     ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - ImplementacaoBuscarInfosEmissao: dataBase: "& dataBase
 
@@ -34,12 +34,13 @@ Function ImplementacaoBuscarInfosEmissao( _
         ImplementacaoBuscarInfosEmissao = "Erro data"
         Exit Function
     End If
-    
     ' ' --- [5] Monta a string de busca ---
     emissao = NomeEmissao()
-    If Len(Trim(nome_unidade)) > 0 Then
-        stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao & " - " & nome_unidade ' Info de uniade
+    If Len(Trim(sufixo_busca)) > 0 Then
+        Debug.Print "Com sufixo: "; sufixo_busca
+        stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao & " - " & sufixo_busca ' Info de uniade
     Else
+        Debug.Print "Sem sufixo"
         stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao ' Info de emissao
     End If
 
@@ -50,6 +51,7 @@ Function ImplementacaoBuscarInfosEmissao( _
 
 
     If resultado = False Then
+        Debug.Print "Erro"
         ImplementacaoBuscarInfosEmissao = 0
         Exit Function
     End If
