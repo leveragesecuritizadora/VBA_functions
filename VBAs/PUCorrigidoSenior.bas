@@ -1,6 +1,6 @@
 Attribute VB_Name = "PUCorrigidoSenior"
 Public Function PreencherPUCorrigidoSenior( _
-    Optional mes_offset As Integer = -1, _
+    Optional mes_offset As Variant = -1, _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 

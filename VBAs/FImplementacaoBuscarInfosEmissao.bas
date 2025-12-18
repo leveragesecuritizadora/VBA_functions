@@ -46,8 +46,8 @@ Function ImplementacaoBuscarInfosEmissao( _
 
     resultado = BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
-    ' Debug.Print "Implementacao BD - busca: "; stringBusca
-    ' Debug.Print "Implementacao BD - resultado: "; BuscarLinha(planilha_dados, coluna_dados, stringBusca)
+    Debug.Print "Implementacao BD - busca: "; stringBusca
+    Debug.Print "Implementacao BD - resultado: "; BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
 
     If resultado = False Then
