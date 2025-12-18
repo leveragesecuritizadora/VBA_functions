@@ -4,7 +4,7 @@ Function PreencherCotasSenior( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    Debug.Print "Cotas Senior"
+   ' Debug.Print "Cotas Senior"
     PreencherCotasSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 2, "senior")
 
 End Function

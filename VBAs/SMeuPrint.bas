@@ -10,6 +10,6 @@ Sub MeuPrint(ParamArray args() As Variant)
         End If
     Next i
 
-    Debug.Print resultado
+   ' Debug.Print resultado
 End Sub
 

@@ -1,11 +1,15 @@
 Attribute VB_Name = "SSanitizarXLSM"
+
 Sub SanitizarXLSM()
 
     Dim wbOrigem As Workbook
+    Dim wbTemp As Workbook
     Dim wbXlsx As Workbook
     Dim ws As Worksheet
     Dim shp As Shape
     Dim ole As OLEObject
+
+    Dim caminhoTemp As String
     Dim caminhoXlsx As String
     Dim pastaConsultas As String
     Dim arquivo As String
@@ -19,24 +23,33 @@ Sub SanitizarXLSM()
     Application.Calculation = xlCalculationManual
 
     ' ==========================
-    ' 1) Garante cálculo
+    ' 1) Cria cópia temporária
     ' ==========================
-    wbOrigem.RefreshAll
+    caminhoTemp = Replace(wbOrigem.FullName, ".xlsm", "_TEMP.xlsm")
+    wbOrigem.SaveCopyAs caminhoTemp
+
+    ' Abre a cópia
+    Set wbTemp = Workbooks.Open(caminhoTemp)
+
+    ' ==========================
+    ' 2) Garante cálculo
+    ' ==========================
+    wbTemp.RefreshAll
     Application.CalculateFull
 
     ' ==========================
-    ' 2) Converte fórmulas em valores
+    ' 3) Converte fórmulas em valores
     ' ==========================
-    For Each ws In wbOrigem.Worksheets
+    For Each ws In wbTemp.Worksheets
         ws.UsedRange.Value = ws.UsedRange.Value
     Next ws
 
     Application.Calculation = xlCalculationAutomatic
 
     ' ==========================
-    ' 3) Remove botões
+    ' 4) Remove botões e OLE
     ' ==========================
-    For Each ws In wbOrigem.Worksheets
+    For Each ws In wbTemp.Worksheets
         For Each shp In ws.Shapes
             If shp.Type = msoFormControl Then shp.Delete
         Next shp
@@ -47,31 +60,32 @@ Sub SanitizarXLSM()
     Next ws
 
     ' ==========================
-    ' 4) Salva como XLSX
+    ' 5) Monta caminho do XLSX final
     ' ==========================
-    Debug.Print "nome planiha antes: " & wbOrigem.FullName
-
     caminhoXlsx = wbOrigem.FullName
     caminhoXlsx = Replace(caminhoXlsx, "CRI ", "")
     caminhoXlsx = Replace(caminhoXlsx, ".", "")
     caminhoXlsx = Replace(caminhoXlsx, "Cascata", "")
     caminhoXlsx = Replace(caminhoXlsx, "Automatizada", "")
     caminhoXlsx = Replace(caminhoXlsx, "VBA", "")
-    caminhoXlsx = Replace(caminhoXlsx, "xlsm", " - Cascata "&Format(Date, "mm-yyyy")&".xlsx")
-
-    ' caminhoXlsx = Trim(caminhoXlsx)
-
-    Debug.Print "nome planiha depois: " & caminhoXlsx
-
-    wbOrigem.SaveAs Filename:=caminhoXlsx, FileFormat:=xlOpenXMLWorkbook
+    caminhoXlsx = Replace(caminhoXlsx, "xlsm", _
+        " - Cascata " & Format(Date, "mm-yyyy") & ".xlsx")
 
     ' ==========================
-    ' 5) Garante referência ao XLSX
+    ' 6) Salva como XLSX (remove VBA)
     ' ==========================
-    Set wbXlsx = ActiveWorkbook   ' agora é o XLSX
+    wbTemp.SaveAs _
+        Filename:=caminhoXlsx, _
+        FileFormat:=xlOpenXMLWorkbook
+
+    ' O workbook ativo agora é o XLSX
+    Set wbXlsx = ActiveWorkbook
+
+    ' Fecha a cópia temporária SEM salvar
+    wbTemp.Close SaveChanges:=False
 
     ' ==========================
-    ' 6) Apaga abas com nome dos .sql
+    ' 7) Apaga abas baseadas nos .sql
     ' ==========================
     pastaConsultas = Environ("USERPROFILE") & _
         "\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\consultas\"
@@ -91,12 +105,12 @@ Sub SanitizarXLSM()
     Loop
 
     ' ==========================
-    ' 7) Finalização
+    ' 8) Finalização
     ' ==========================
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
 
-    MsgBox "Arquivo sanitizado gerado e mantido aberto com sucesso!" & _
+    MsgBox "Arquivo sanitizado gerado com sucesso!" & _
            vbCrLf & caminhoXlsx, vbInformation
 
 End Sub

@@ -48,8 +48,8 @@ Function ImplementacaoBuscarInfosEmissao( _
 
     resultado = BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
-   MeuPrint "Implementacao BD ", planilha_dados, " - busca: ", stringBusca
-   MeuPrint "Implementacao BD ", planilha_dados, " - resultado: ", BuscarLinha(planilha_dados, coluna_dados, stringBusca)
+'    MeuPrint "Implementacao BD ", planilha_dados, " - busca: ", stringBusca
+'    MeuPrint "Implementacao BD ", planilha_dados, " - resultado: ", BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
 
     If resultado = False Then
