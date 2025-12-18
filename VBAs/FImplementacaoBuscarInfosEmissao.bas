@@ -13,7 +13,6 @@ Function ImplementacaoBuscarInfosEmissao( _
     Dim dataBase As Variant
     Dim emissao As String
     Dim resultado As Variant
-    Debug.Print "aaaaa"
     ' att aut das celulas a cada mudanca
     Application.Volatile True
     
@@ -26,7 +25,7 @@ Function ImplementacaoBuscarInfosEmissao( _
 
     dataBase = VerificaDataEOffset(wsAtual.Cells(celAtual.Row, coluna_data).Value, mes_offset)
 
-    Debug.Print "Data Cascata" & dataBase
+    ' Debug.Print "Data Cascata" & dataBase
 
     ' Debug.Print Now() & "C: "& celAtual.Column & celAtual.Row & " - ImplementacaoBuscarInfosEmissao: dataBase: "& dataBase
 
@@ -37,21 +36,21 @@ Function ImplementacaoBuscarInfosEmissao( _
     ' ' --- [5] Monta a string de busca ---
     emissao = NomeEmissao()
     If Len(Trim(sufixo_busca)) > 0 Then
-        Debug.Print "Com sufixo: "; sufixo_busca
+       ' Debug.Print "Com sufixo: "; sufixo_busca
         stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao & " - " & sufixo_busca ' Info de uniade
     Else
-        Debug.Print "Sem sufixo"
+       ' Debug.Print "Sem sufixo"
         stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao ' Info de emissao
     End If
 
     resultado = BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
-    Debug.Print "Implementacao BD - busca: "; stringBusca
-    Debug.Print "Implementacao BD - resultado: "; BuscarLinha(planilha_dados, coluna_dados, stringBusca)
+   ' Debug.Print "Implementacao BD - busca: "; stringBusca
+   ' Debug.Print "Implementacao BD - resultado: "; BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
 
     If resultado = False Then
-        Debug.Print "Erro"
+       ' Debug.Print "Erro"
         ImplementacaoBuscarInfosEmissao = 0
         Exit Function
     End If

@@ -4,7 +4,7 @@ Public Function PreencherPMTSenior( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    Debug.Print Now() & " ======================PMTSenior"
+    ' PrintIniFuncao("PMTSenior")
     PreencherPMTSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 7, "senior") 
 
 End Function
