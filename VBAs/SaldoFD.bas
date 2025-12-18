@@ -4,6 +4,7 @@ Function PreencherSaldoFD( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
+    PrintIniFuncao("SaldoFD")
     PreencherSaldoFD = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFundos", 2)
 
 

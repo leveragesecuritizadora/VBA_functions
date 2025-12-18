@@ -36,17 +36,20 @@ Function ImplementacaoBuscarInfosEmissao( _
     ' ' --- [5] Monta a string de busca ---
     emissao = NomeEmissao()
     If Len(Trim(sufixo_busca)) > 0 Then
-       ' Debug.Print "Com sufixo: "; sufixo_busca
+    '    Debug.Print "Com sufixo: "; sufixo_busca
         stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao & " - " & sufixo_busca ' Info de uniade
     Else
-       ' Debug.Print "Sem sufixo"
+    '    Debug.Print "Sem sufixo"
         stringBusca = FormatarDataString(dataBase, mes_offset) & " - " & emissao ' Info de emissao
+        ' Debug.Print "FormatarDataString: "; FormatarDataString(dataBase, mes_offset)
+        ' Debug.Print "emissao: "; emissao
+        ' Debug.Print "busca sem sufixo: "; stringBusca
     End If
 
     resultado = BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
-'    Debug.Print "Implementacao BD - busca: "; stringBusca
-'    Debug.Print "Implementacao BD - resultado: "; BuscarLinha(planilha_dados, coluna_dados, stringBusca)
+   MeuPrint "Implementacao BD ", planilha_dados, " - busca: ", stringBusca
+   MeuPrint "Implementacao BD ", planilha_dados, " - resultado: ", BuscarLinha(planilha_dados, coluna_dados, stringBusca)
 
 
     If resultado = False Then
