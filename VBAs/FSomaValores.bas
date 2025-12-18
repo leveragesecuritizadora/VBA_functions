@@ -20,7 +20,7 @@ Function SomaValores( _
         ' Debug.print "----"
         If Left(cel.Value, Len(id)) = id Then
             ' Debug.Print "val antes: "; somador
-            ' Debug.Print "bateu Cel: " & Cstr(coluna_buscar) & Cstr(cel.Row); cel.Value
+            ' Debug.Print "Soma Valores bateu Cel: " & Cstr(coluna_buscar) & Cstr(cel.Row); cel.Value
             ' Debug.Print "testando"
             somador = somador + planilhaDados.Cells(cel.Row, coluna_buscar).Value
             ' Debug.Print "val depois: "; somador
