@@ -11,7 +11,6 @@ Sub SanitizarXLSM()
     Dim arquivo As String
     Dim nomeAba As String
     Dim i As Long
-    Dim contador As Integer
 
     Set wbOrigem = ThisWorkbook
 
@@ -38,7 +37,6 @@ Sub SanitizarXLSM()
     ' 3) Remove botões
     ' ==========================
     For Each ws In wbOrigem.Worksheets
-
         For Each shp In ws.Shapes
             If shp.Type = msoFormControl Then shp.Delete
         Next shp
@@ -46,31 +44,42 @@ Sub SanitizarXLSM()
         For Each ole In ws.OLEObjects
             ole.Delete
         Next ole
-
     Next ws
 
     ' ==========================
     ' 4) Salva como XLSX
     ' ==========================
-    caminhoXlsx = Replace(wbOrigem.FullName, ".xlsm", "_sanitizado.xlsx")
+    Debug.Print "nome planiha antes: " & wbOrigem.FullName
+
+    caminhoXlsx = wbOrigem.FullName
+    caminhoXlsx = Replace(caminhoXlsx, "CRI ", "")
+    caminhoXlsx = Replace(caminhoXlsx, ".", "")
+    caminhoXlsx = Replace(caminhoXlsx, "Cascata", "")
+    caminhoXlsx = Replace(caminhoXlsx, "Automatizada", "")
+    caminhoXlsx = Replace(caminhoXlsx, "VBA", "")
+    caminhoXlsx = Replace(caminhoXlsx, "xlsm", " - Cascata "&Format(Date, "mm-yyyy")&".xlsx")
+
+    ' caminhoXlsx = Trim(caminhoXlsx)
+
+    Debug.Print "nome planiha depois: " & caminhoXlsx
+
     wbOrigem.SaveAs Filename:=caminhoXlsx, FileFormat:=xlOpenXMLWorkbook
 
     ' ==========================
-    ' 5) Abre o XLSX limpo
+    ' 5) Garante referência ao XLSX
     ' ==========================
-    Set wbXlsx = Workbooks.Open(caminhoXlsx)
+    Set wbXlsx = ActiveWorkbook   ' agora é o XLSX
 
     ' ==========================
     ' 6) Apaga abas com nome dos .sql
     ' ==========================
-    pastaConsultas = Environ("USERPROFILE") & "\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\consultas\"
+    pastaConsultas = Environ("USERPROFILE") & _
+        "\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\consultas\"
+
     arquivo = Dir(pastaConsultas & "*.sql")
 
-    contador = 0
     Do While arquivo <> ""
         nomeAba = Left(arquivo, Len(arquivo) - 4)
-        contador = contador + 1
-        Debug.print Cstr(contador) & " - " & nomeAba
 
         For i = wbXlsx.Worksheets.Count To 1 Step -1
             If wbXlsx.Worksheets(i).Name = nomeAba Then
@@ -82,14 +91,12 @@ Sub SanitizarXLSM()
     Loop
 
     ' ==========================
-    ' 7) Salva e fecha o XLSX
+    ' 7) Finalização
     ' ==========================
-    wbXlsx.Save
-    wbXlsx.Close SaveChanges:=False
-
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
 
-    MsgBox "Arquivo sanitizado gerado com sucesso!" & vbCrLf & caminhoXlsx, vbInformation
+    MsgBox "Arquivo sanitizado gerado e mantido aberto com sucesso!" & _
+           vbCrLf & caminhoXlsx, vbInformation
 
 End Sub
