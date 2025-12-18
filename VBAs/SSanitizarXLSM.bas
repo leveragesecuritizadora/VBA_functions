@@ -1,4 +1,4 @@
-Attribute VB_Name = "FSanitizarXLSM"
+Attribute VB_Name = "SSanitizarXLSM"
 Sub SanitizarXLSM()
     Dim wb As Workbook
     Dim ws As Worksheet
