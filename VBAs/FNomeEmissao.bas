@@ -8,6 +8,7 @@ Function NomeEmissao()
     emissao = nomePlanilha
     ' MeuPrint nomePlanilha
     emissao = Replace(emissao, "CRI ", "")
+    emissao = Replace(emissao, "TEMP_", "")
     emissao = Replace(emissao, " - ", "")
     ' MeuPrint "rm CRI ", emissao
     emissao = Replace(emissao, ".", "")
@@ -20,6 +21,8 @@ Function NomeEmissao()
     ' MeuPrint "rm VBA", emissao
     emissao = Replace(emissao, "xlsm", "")
     ' MeuPrint "rm xlsm", emissao
+
+    ' MeuPrint NomeEmissao
 
     NomeEmissao = Trim(emissao)
 

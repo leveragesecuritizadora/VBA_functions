@@ -16,6 +16,12 @@ Sub SanitizarXLSM()
     Dim nomeAba As String
     Dim i As Long
 
+    Dim partes As Variant
+    Dim nomeEmissao As String
+    Dim prefixoCaminho As String
+
+    
+
     Set wbOrigem = ThisWorkbook
 
     Application.ScreenUpdating = False
@@ -25,11 +31,21 @@ Sub SanitizarXLSM()
     ' ==========================
     ' 1) Cria cópia temporária
     ' ==========================
-    caminhoTemp = Replace(wbOrigem.FullName, ".xlsm", "_TEMP.xlsm")
+    prefixoCaminho = Environ("USERPROFILE") & "\OneDrive - Leverage\Área de Trabalho\"
+
+    partes = Split(wbOrigem.FullName, "/")
+    nomeEmissao = partes(UBound(partes))
+    caminhoTemp =  prefixoCaminho & "TEMP_" & nomeEmissao
+
     wbOrigem.SaveCopyAs caminhoTemp
 
-    ' Abre a cópia
+    ' ' Abre a cópia
     Set wbTemp = Workbooks.Open(caminhoTemp)
+
+    If wbTemp Is Nothing Then
+        MsgBox "Arquivo temporário não foi aberto. Avise o Caique que deu erro na sanitizaçao"
+        Exit Sub
+    End If
 
     ' ==========================
     ' 2) Garante cálculo
@@ -62,14 +78,23 @@ Sub SanitizarXLSM()
     ' ==========================
     ' 5) Monta caminho do XLSX final
     ' ==========================
-    caminhoXlsx = wbOrigem.FullName
+    partes = Split(wbTemp.FullName, "\")
+    nomeEmissao = partes(UBound(partes))
+    
+    caminhoXlsx = nomeEmissao
+
+    caminhoXlsx = Replace(caminhoXlsx, "TEMP_", "")
     caminhoXlsx = Replace(caminhoXlsx, "CRI ", "")
     caminhoXlsx = Replace(caminhoXlsx, ".", "")
     caminhoXlsx = Replace(caminhoXlsx, "Cascata", "")
     caminhoXlsx = Replace(caminhoXlsx, "Automatizada", "")
     caminhoXlsx = Replace(caminhoXlsx, "VBA", "")
-    caminhoXlsx = Replace(caminhoXlsx, "xlsm", _
-        " - Cascata " & Format(Date, "mm-yyyy") & ".xlsx")
+
+    caminhoXlsx = Replace(caminhoXlsx, "xlsm", "")
+    caminhoXlsx = Trim(caminhoXlsx)
+
+    caminhoXlsx = prefixoCaminho & caminhoXlsx & " - Cascata " & Format(Date, "mm-yyyy") & ".xlsx"
+
 
     ' ==========================
     ' 6) Salva como XLSX (remove VBA)
@@ -78,35 +103,51 @@ Sub SanitizarXLSM()
         Filename:=caminhoXlsx, _
         FileFormat:=xlOpenXMLWorkbook
 
-    ' O workbook ativo agora é o XLSX
-    Set wbXlsx = ActiveWorkbook
+    MeuPrint caminhoXlsx
 
-    ' Fecha a cópia temporária SEM salvar
-    wbTemp.Close SaveChanges:=False
+    ' ' O workbook ativo agora é o XLSX
+    Set wbXlsx = Workbooks.Open(caminhoXlsx)
 
-    ' ==========================
-    ' 7) Apaga abas baseadas nos .sql
-    ' ==========================
-    pastaConsultas = Environ("USERPROFILE") & _
-        "\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\consultas\"
+    If wbXlsx Is Nothing Then
+        MsgBox "Arquivo temporário não foi aberto. Avise o Caique que deu erro na sanitizaçao"
+        Exit Sub
+    End If
 
-    arquivo = Dir(pastaConsultas & "*.sql")
+    ' ' ==========================
+    ' ' 7) Apaga abas baseadas nos .sql
+    ' ' ==========================
+    ' pastaConsultas = Environ("USERPROFILE") & _
+    '     "\OneDrive - Leverage\Área de Trabalho\repos\VBA_functions\consultas\"
 
-    Do While arquivo <> ""
-        nomeAba = Left(arquivo, Len(arquivo) - 4)
+    ' arquivo = Dir(pastaConsultas & "*.sql")
 
-        For i = wbXlsx.Worksheets.Count To 1 Step -1
-            If wbXlsx.Worksheets(i).Name = nomeAba Then
-                wbXlsx.Worksheets(i).Delete
-            End If
-        Next i
+    ' Do While arquivo <> ""
+    '     nomeAba = Left(arquivo, Len(arquivo) - 4)
 
-        arquivo = Dir
-    Loop
+    '     For i = wbXlsx.Worksheets.Count To 1 Step -1
+    '         If wbXlsx.Worksheets(i).Name = nomeAba Then
+    '             wbXlsx.Worksheets(i).Delete
+    '         End If
+    '     Next i
 
-    ' ==========================
-    ' 8) Finalização
-    ' ==========================
+    '     arquivo = Dir
+    ' Loop
+
+    
+
+    ' Fecha a cópia temporária salvando
+    wbTemp.Close SaveChanges:=True
+
+    Kill caminhoTemp
+
+
+    ' MeuPrint "a ", caminhoTemp
+    ' MeuPrint "b ",prefixoCaminho & caminhoXlsx
+    ' Name caminhoTemp AS prefixoCaminho & caminhoXlsx
+
+    ' ' ==========================
+    ' ' 8) Finalização
+    ' ' ==========================
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
 
