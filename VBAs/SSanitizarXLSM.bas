@@ -56,8 +56,12 @@ Sub SanitizarXLSM()
     ' ==========================
     ' 3) Converte fórmulas em valores
     ' ==========================
+    Dim rng As Range
     For Each ws In wbTemp.Worksheets
-        ws.UsedRange.Value = ws.UsedRange.Value
+        Set rng = ws.UsedRange
+        rng.Copy
+        rng.PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
     Next ws
 
     Application.Calculation = xlCalculationAutomatic
@@ -85,6 +89,7 @@ Sub SanitizarXLSM()
 
     caminhoXlsx = Replace(caminhoXlsx, "TEMP_", "")
     caminhoXlsx = Replace(caminhoXlsx, "CRI ", "")
+    caminhoXlsx = Replace(caminhoXlsx, " - ", "")
     caminhoXlsx = Replace(caminhoXlsx, ".", "")
     caminhoXlsx = Replace(caminhoXlsx, "Cascata", "")
     caminhoXlsx = Replace(caminhoXlsx, "Automatizada", "")
