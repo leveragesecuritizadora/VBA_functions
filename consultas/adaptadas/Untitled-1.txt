@@ -1,1 +1,0 @@
-= Sql.Database("sqlserver-emissions-prod.database.windows.net", "sqldb-emissions-dw-prod", [Query="
