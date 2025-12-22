@@ -7,8 +7,11 @@ Public Sub OrquestradorAtualizacoesVBAs()
     Application.ScreenUpdating = False
 
     Call ApagarModulos
+    Debug.Print "rodou ApagarModulos"
     Call BaixarModulosViaManifest
+    Debug.Print "rodou BaixarModulosViaManifest"
     Call ImportarModulos
+    Debug.Print "rodou ImportarModulos"
 
     Application.ScreenUpdating = True
     MsgBox "Projeto VBA atualizado com sucesso!", vbInformation
