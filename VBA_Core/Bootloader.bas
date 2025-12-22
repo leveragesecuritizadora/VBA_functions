@@ -1,25 +1,25 @@
 Attribute VB_Name = "Bootloader"
 
-Public Sub AtualizarProjeto()
+Public Sub RodarBootloader()
     Dim url As String
     Dim pastaTemp As String
     Dim caminhoCore As String
 
-    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/tree/main/VBA_Core/Core.bas"
+    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/VBA_Core/OrquestradorAtualizacoesVBAs.bas"
     pastaTemp = Environ("TEMP") & "\vba\"
-    caminhoCore = pastaTemp & "Core.bas"
+    caminhoCore = pastaTemp & "OrquestradorAtualizacoesVBAs.bas"
 
     If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
 
     If Not BaixarArquivo(url, caminhoCore) Then
-        MsgBox "Falha ao baixar Core.bas", vbCritical
+        MsgBox "Falha ao baixar OrquestradorAtualizacoesVBAs.bas", vbCritical
         Exit Sub
     End If
 
-    ImportarCore caminhoCore
+    ImportarOrquestrador caminhoCore
 
     ' chama o orquestrador REAL
-    Application.Run "AtualizarProjetoVBA"
+    Application.Run "OrquestradorAtualizacoesVBAs"
 End Sub
 
 Private Function BaixarArquivo(url As String, destino As String) As Boolean
@@ -42,10 +42,10 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
     BaixarArquivo = True
 End Function
 
-Private Sub ImportarCore(caminho As String)
+Private Sub ImportarOrquestrador(caminho As String)
     On Error Resume Next
     ThisWorkbook.VBProject.VBComponents.Remove _
-        ThisWorkbook.VBProject.VBComponents("Core")
+        ThisWorkbook.VBProject.VBComponents("OrquestradorAtualizacoesVBAs")
     On Error GoTo 0
 
     ThisWorkbook.VBProject.VBComponents.Import caminho
