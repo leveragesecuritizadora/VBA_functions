@@ -16,7 +16,7 @@ Public Sub OrquestradorAtualizacoesVBAs()
         Application.ScreenUpdating = True
 End Sub
 
-Private Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Boolean
+Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Boolean
     Dim http As Object
     Dim stream As Object
 
@@ -39,7 +39,7 @@ Private Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As Strin
     BaixarArquivoGitHubPublico = True
 End Function
 
-Private Function BaixarTexto(url As String) As String
+Function BaixarTexto(url As String) As String
     Dim http As Object
 
     Set http = CreateObject("MSXML2.XMLHTTP")
@@ -53,7 +53,7 @@ Private Function BaixarTexto(url As String) As String
     End If
 End Function
 
-Private Sub ApagarModulos()
+Sub ApagarModulos()
     Dim i As Long
     Dim vbComp As Object
 
@@ -68,7 +68,7 @@ Private Sub ApagarModulos()
     Next i
 End Sub
 
-Private Sub BaixarModulosViaManifest()
+Sub BaixarModulosViaManifest()
     Dim urlManifest As String
     Dim baseUrl As String
     Dim pastaTemp As String
@@ -108,7 +108,7 @@ Private Sub BaixarModulosViaManifest()
     Next i
 End Sub
 
-Private Sub ImportarModulos()
+Sub ImportarModulos()
     Dim pasta As String
     Dim arquivo As String
 
