@@ -24,12 +24,16 @@ Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Bo
     Dim http As Object
     Dim stream As Object
 
+    Debug.print "Dentro BaixarArquivoGitHubPublico: "; url
+
     Set http = CreateObject("MSXML2.XMLHTTP")
     http.Open "GET", url, False
     http.send
 
     If http.Status <> 200 Then
         BaixarArquivoGitHubPublico = False
+        Debug.print "erro  BaixarArquivoGitHubPublico: "; url
+
         Exit Function
     End If
 
@@ -39,6 +43,8 @@ Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Bo
     stream.Write http.responseBody
     stream.SaveToFile caminhoLocal, 2
     stream.Close
+
+    Debug.print "saindo BaixarArquivoGitHubPublico"
 
     BaixarArquivoGitHubPublico = True
 End Function
