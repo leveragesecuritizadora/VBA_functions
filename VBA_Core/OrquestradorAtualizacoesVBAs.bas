@@ -24,28 +24,28 @@ Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Bo
     Dim http As Object
     Dim stream As Object
 
-    Debug.print "Dentro BaixarArquivoGitHubPublico: "; url
+    Debug.Print "Dentro BaixarArquivoGitHubPublico: "; url
 
-    Set http = CreateObject("MSXML2.XMLHTTP")
+    Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
+
+    http.SetTimeouts 5000, 5000, 5000, 10000
     http.Open "GET", url, False
-    http.send
+    http.Send
 
     If http.Status <> 200 Then
+        Debug.Print "Erro HTTP " & http.Status & ": " & url
         BaixarArquivoGitHubPublico = False
-        Debug.print "erro  BaixarArquivoGitHubPublico: "; url
-
         Exit Function
     End If
 
     Set stream = CreateObject("ADODB.Stream")
-    stream.Type = 1 ' binário
+    stream.Type = 1
     stream.Open
-    stream.Write http.responseBody
+    stream.Write http.ResponseBody
     stream.SaveToFile caminhoLocal, 2
     stream.Close
 
-    Debug.print "saindo BaixarArquivoGitHubPublico"
-
+    Debug.Print "Saindo BaixarArquivoGitHubPublico"
     BaixarArquivoGitHubPublico = True
 End Function
 
