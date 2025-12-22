@@ -1,8 +1,8 @@
-Attribute VB_Name = "OrquestradorAtualizacoesVBAs"
+Attribute VB_Name = "SOrquestradorAtualizacoesVBAs"
 
 Public Sub OrquestradorAtualizacoesVBAs()
     On Error GoTo Fim
-    
+
     Application.ScreenUpdating = False
 
     Call ApagarModulos
