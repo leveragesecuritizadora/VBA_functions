@@ -1,7 +1,7 @@
 Attribute VB_Name = "OrquestradorAtualizacoesVBAs"
 
 Public Sub OrquestradorAtualizacoesVBAs()
-    Debug.Print "Rodando orquestrador"
+    Debug.Print "1059Rodando orquestrador"
     On Error GoTo Fim
 
     Application.ScreenUpdating = False
