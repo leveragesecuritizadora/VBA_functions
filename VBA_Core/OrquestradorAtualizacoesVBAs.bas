@@ -81,6 +81,8 @@ Sub BaixarModulosViaManifest()
     Dim conteudo As String
     Dim nomeArquivo As String
 
+    Debug.Print "Dentro BaixarModulosViaManifest"
+
     baseUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/"
     urlManifest = baseUrl & "manifest.txt"
     pastaTemp = Environ("TEMP") & "\vba\"
@@ -94,11 +96,13 @@ Sub BaixarModulosViaManifest()
     End If
 
     linhas = Split(conteudo, vbLf)
+    Debug.Print "Meio 1 BaixarModulosViaManifest"
 
     ' Limpando pasta
     On Error Resume Next
     Kill pastaTemp & "*.bas"
     On Error GoTo 0
+    Debug.Print "Meio 2 BaixarModulosViaManifest"
 
 
     For i = LBound(linhas) To UBound(linhas)
@@ -110,14 +114,19 @@ Sub BaixarModulosViaManifest()
             End If
         End If
     Next i
+    Debug.Print "Saindo BaixarModulosViaManifest"
+
 End Sub
 
 Sub ImportarModulos()
     Dim pasta As String
     Dim arquivo As String
 
+    Debug.Print "Dentro ImportarModulos"
+
     pasta = Environ("TEMP") & "\vba\"
     arquivo = Dir(pasta & "*.bas")
+    Debug.Print "meio ImportarModulos"
 
     Do While arquivo <> ""
         If arquivo <> "OrquestradorAtualizacoesVBAs.bas" Then
@@ -125,4 +134,6 @@ Sub ImportarModulos()
         End If
         arquivo = Dir
     Loop
+    Debug.Print "saindo ImportarModulos"
+
 End Sub
