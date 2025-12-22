@@ -5,22 +5,22 @@ Public Sub RodarBootloader()
     Dim pastaTemp As String
     Dim caminhoCore As String
 
-    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/VBA_Core/SOrquestradorAtualizacoesVBAs.bas"
+    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/VBA_Core/OrquestradorAtualizacoesVBAs.bas"
     pastaTemp = Environ("TEMP") & "\vba\"
-    caminhoCore = pastaTemp & "SOrquestradorAtualizacoesVBAs.bas"
+    caminhoCore = pastaTemp & "OrquestradorAtualizacoesVBAs.bas"
 
     If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
 
     If Not BaixarArquivo(url, caminhoCore) Then
-        MsgBox "Falha ao baixar SOrquestradorAtualizacoesVBAs.bas", vbCritical
+        MsgBox "Falha ao baixar OrquestradorAtualizacoesVBAs.bas", vbCritical
         Exit Sub
     End If
 
     ImportarOrquestrador caminhoCore
 
     ' chama o orquestrador REAL
-    Application.Run "OrquestradorAtualizacoesVBAs"
-    Debug.Print "aquiiii"
+    Application.Run "OrquestradorAtualizacoesVBAs.OrquestradorAtualizacoesVBAs"
+    ' Debug.Print "aquiiii"
 End Sub
 
 Private Function BaixarArquivo(url As String, destino As String) As Boolean
@@ -46,7 +46,7 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
     stream.SaveToFile destino, 2
     stream.Close
 
-    Debug.Print "Estou aqui"
+    ' Debug.Print "Estou aqui"
     BaixarArquivo = True
 End Function
 
