@@ -1,4 +1,4 @@
-Attribute VB_Name = "SOrquestradorAtualizacoesVBAs"
+Attribute VB_Name = "OrquestradorAtualizacoesVBAs"
 
 Public Sub OrquestradorAtualizacoesVBAs()
     On Error GoTo Fim
