@@ -164,11 +164,23 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
 
 
     Set stream = CreateObject("ADODB.Stream")
+        Debug.Print "Dentro 2.1 BaixarArquivo: "; url
+
     stream.Type = 1
+        Debug.Print "Dentro 2.2 BaixarArquivo: "; url
+
     stream.Open
+        Debug.Print "Dentro 2.3 BaixarArquivo: "; url
+
     stream.Write http.responseBody
+        Debug.Print "Dentro 2.4 BaixarArquivo: "; url
+
     stream.SaveToFile destino, 2
+        Debug.Print "Dentro 2.5 BaixarArquivo: "; url
+
     stream.Close
+        Debug.Print "Dentro 2.6 BaixarArquivo: "; url
+
 
     Debug.Print "Dentro 3 BaixarArquivo: "; url
     BaixarArquivo = True
