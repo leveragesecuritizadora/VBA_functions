@@ -110,12 +110,18 @@ Sub BaixarModulosViaManifest()
     On Error GoTo 0
     Debug.Print "Meio 2 BaixarModulosViaManifest"
 
+    Dim urlArquivo As String
+    Dim nomeArquivoFormatado As String
 
     For i = LBound(linhas) To UBound(linhas)
         nomeArquivo = Trim(linhas(i))
 
+        urlArquivo = baseUrl & nomeArquivo
+        nomeArquivoFormatado = pastaTemp & Replace(nomeArquivo, "VBAs", "")
+        nomeArquivoFormatado = pastaTemp & Replace(nomeArquivo, "/", "")
+
         If nomeArquivo <> "" Then
-            If Not BaixarArquivo(baseUrl & nomeArquivo, pastaTemp & nomeArquivo) Then
+            If Not BaixarArquivo(urlArquivo, nomeArquivoFormatado) Then
                 MsgBox "Erro ao baixar " & nomeArquivo, vbCritical
             End If
         End If

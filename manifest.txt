@@ -2,7 +2,6 @@ VBAs/AmortizacaoSeniorExtraordinaria.bas
 VBAs/AmortizacaoSeniorOrdinaria.bas
 VBAs/AmortizacaoSubordinadaExtraordinaria.bas
 VBAs/AmortizacaoSubordinadaOrdinaria.bas
-VBAs/AtualizarModulos.bas
 VBAs/CotasSenior.bas
 VBAs/CotasSubordinada.bas
 VBAs/FBuscarLinha.bas
@@ -35,7 +34,6 @@ VBAs/SaldoFD.bas
 VBAs/SaldoFR.bas
 VBAs/SaldoMinFD.bas
 VBAs/SaldoMinFR.bas
-VBAs/SApagarModulos.bas
 VBAs/SAtualizarTabelas.bas
 VBAs/SCabecalhoDaConsulta.bas
 VBAs/SMeuPrint.bas
