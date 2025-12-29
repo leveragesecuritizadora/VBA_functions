@@ -115,7 +115,7 @@ Sub BaixarModulosViaManifest()
         nomeArquivo = Trim(linhas(i))
 
         If nomeArquivo <> "" Then
-            If Not BaixarArquivoGitHubPublico(baseUrl & nomeArquivo, pastaTemp & nomeArquivo) Then
+            If Not BaixarArquivo(baseUrl & nomeArquivo, pastaTemp & nomeArquivo) Then
                 MsgBox "Erro ao baixar " & nomeArquivo, vbCritical
             End If
         End If
@@ -143,3 +143,33 @@ Sub ImportarModulos()
     Debug.Print "saindo ImportarModulos"
 
 End Sub
+
+Private Function BaixarArquivo(url As String, destino As String) As Boolean
+    Dim http As Object
+    Dim stream As Object
+
+    Debug.Print "Dentro BaixarArquivo: "; url
+
+    Set http = CreateObject("MSXML2.XMLHTTP")
+    http.Open "GET", url, False
+    http.send
+
+    ' If http.Status <> 200 Then Exit Function
+    If http.Status <> 200 Then
+        MsgBox "HTTP Status: " & http.Status & vbCrLf & url, vbCritical
+        BaixarArquivo = False
+        Exit Function
+    End If
+    Debug.Print "Dentro 2 BaixarArquivo: "; url
+
+
+    Set stream = CreateObject("ADODB.Stream")
+    stream.Type = 1
+    stream.Open
+    stream.Write http.responseBody
+    stream.SaveToFile destino, 2
+    stream.Close
+
+    Debug.Print "Dentro 3 BaixarArquivo: "; url
+    BaixarArquivo = True
+End Function
