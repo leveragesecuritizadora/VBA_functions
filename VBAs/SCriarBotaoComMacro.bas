@@ -19,6 +19,12 @@ Sub CriarBotaoComMacro( _
 
     Set ws = ThisWorkbook.Sheets(nome_aba)
 
+    ' Se já existir, remove (evita duplicar)
+    If BotaoExiste(ws, funcao_argumento) Then
+        Debug.Print "botao " & funcao_argumento & " já existe, deletando botão..."
+        ws.Shapes(funcao_argumento).Delete
+    End If
+
     ' Cria o botão
     Set btn = ws.Shapes.AddShape( _
         Type:=msoShapeRoundedRectangle, _
@@ -92,4 +98,10 @@ Private Function CorPorNome(nomeCor As String) As Long
             CorPorNome = RGB(0, 112, 192)
     End Select
 
+End Function
+
+Private Function BotaoExiste(ws As Worksheet, nomeShape As String) As Boolean
+    On Error Resume Next
+    BotaoExiste = Not ws.Shapes(nomeShape) Is Nothing
+    On Error GoTo 0
 End Function
