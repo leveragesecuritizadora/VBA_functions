@@ -68,7 +68,6 @@ Sub AtualizarTabelas()
         tbl.Range.Cells(2, 1).CopyFromRecordset rs
 
         rs.Close
-        arquivo = Dir
     Next i
 
 
