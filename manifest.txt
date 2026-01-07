@@ -4,6 +4,7 @@ VBAs/AmortizacaoSubordinadaExtraordinaria.bas
 VBAs/AmortizacaoSubordinadaOrdinaria.bas
 VBAs/CotasSenior.bas
 VBAs/CotasSubordinada.bas
+VBAs/DBconfig.ini
 VBAs/FBuscarLinha.bas
 VBAs/FFormatarDataString.bas
 VBAs/FGetOrCreateSheet.bas
@@ -16,6 +17,7 @@ VBAs/FSomaValores.bas
 VBAs/FVerificaDataEOffset.bas
 VBAs/JurosSenior.bas
 VBAs/JurosSubordinada.bas
+VBAs/LerConfig.bas
 VBAs/PMTSenior.bas
 VBAs/PMTSubordinada.bas
 VBAs/PUCorrigidoSenior.bas
@@ -35,6 +37,9 @@ VBAs/SaldoFR.bas
 VBAs/SaldoMinFD.bas
 VBAs/SaldoMinFR.bas
 VBAs/SAtualizarTabelas.bas
+VBAs/SAtualizarTabelasbkp.bas
+VBAs/SBaixarArquivo.bas
+VBAs/SBaixarModulosViaManifestGenerico.bas
 VBAs/SCabecalhoDaConsulta.bas
 VBAs/SMeuPrint.bas
 VBAs/SPrintIniFuncao.bas

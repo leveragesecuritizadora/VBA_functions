@@ -11,7 +11,7 @@ Sub AtualizarTabelas()
     Dim nomeBase As String
 
     ' iterando sobre os sql
-    dim teste As String
+    Dim teste As String
     teste = BaixarTexto("https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/manifest_sql.txt")
 
     LimparTerminal "SQLLLL"
