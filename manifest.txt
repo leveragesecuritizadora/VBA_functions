@@ -43,3 +43,4 @@ VBAs/SMeuPrint.bas
 VBAs/SPrintIniFuncao.bas
 VBAs/SSanitizarXLSM.bas
 VBAs/SBaixarTexto.bas
+VBAs/SLimparTerminal.bas
