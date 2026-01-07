@@ -5,7 +5,7 @@ Public Sub RodarBootloader()
     Dim pastaTemp As String
     Dim caminhoCore As String
 
-    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/VBA_Core/OrquestradorAtualizacoesVBAs.bas"
+    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/emissao_unica/VBA_Core/OrquestradorAtualizacoesVBAs.bas"
     pastaTemp = Environ("TEMP") & "\vba\"
     caminhoCore = pastaTemp & "OrquestradorAtualizacoesVBAs.bas"
 
