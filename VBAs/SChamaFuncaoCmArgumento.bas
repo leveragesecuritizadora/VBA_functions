@@ -11,6 +11,8 @@ Sub ChamaFuncaoCmArgumento()
     funcao = partes(0)
     parametro = CInt(partes(1))
 
+    Debug.Print funcao, parametro
+
     If funcao = "AtualizarTabelas" Then
         AtualizarTabelas(parametro)
     End If
