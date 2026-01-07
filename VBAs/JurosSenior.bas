@@ -4,8 +4,8 @@ Public Function PreencherJurosSenior( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    ' Debug.Print "JS"
-    PreencherJurosSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 3, "senior")
+    Debug.Print "JS"
+    PreencherJurosSenior = BuscarInformacoesAcumuladas(mes_offset, coluna_data, "Juros", 3, "senior")
 
 End Function
 
