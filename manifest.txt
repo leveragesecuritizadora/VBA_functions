@@ -42,5 +42,6 @@ VBAs/SCabecalhoDaConsulta.bas
 VBAs/SCriarBotaoComMacro.bas
 VBAs/SLimparTerminal.bas
 VBAs/SMeuPrint.bas
+VBAs/SOrquestraAutomacaoPlanilha.bas
 VBAs/SPrintIniFuncao.bas
 VBAs/SSanitizarXLSM.bas
