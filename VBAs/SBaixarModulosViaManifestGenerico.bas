@@ -1,9 +1,11 @@
 Attribute VB_Name = "SBaixarModulosViaManifestGenerico"
 
-Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
+Sub BaixarModulosViaManifestGenerico( _ 
+    url_manifest_generico As String, 
+    pasta_temp As String _
+)
     Dim urlManifest As String
     Dim baseUrl As String
-    Dim pastaTemp As String
     Dim linhas As Variant
     Dim i As Long
     Dim conteudo As String
@@ -13,9 +15,8 @@ Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
 
     baseUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/"
     urlManifest = baseUrl & url_manifest_generico
-    pastaTemp = Environ("TEMP") & "\vba\"
 
-    If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
+    If Dir(pasta_temp, vbDirectory) = "" Then MkDir pasta_temp
 
     conteudo = BaixarTexto(urlManifest)
     If conteudo = "" Then
@@ -28,7 +29,7 @@ Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
 
     ' Limpando pasta
     On Error Resume Next
-    Kill pastaTemp & "*.bas"
+    Kill pasta_temp & "*.bas"
     On Error GoTo 0
     Debug.Print "Meio 2 BaixarModulosViaManifestGenerico"
 
@@ -45,8 +46,8 @@ Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
 
 
         urlArquivo = baseUrl & nomeArquivo
-        nomeArquivoFormatado = pastaTemp & Replace(nomeArquivo, "VBAs", "")
-        nomeArquivoFormatado = pastaTemp & Replace(nomeArquivo, "/", "")
+        nomeArquivoFormatado = pasta_temp & Replace(nomeArquivo, "VBAs", "")
+        nomeArquivoFormatado = pasta_temp & Replace(nomeArquivo, "/", "")
 
         If nomeArquivo <> "" Then
             If Not BaixarArquivo(urlArquivo, nomeArquivoFormatado) Then

@@ -20,36 +20,7 @@ Public Sub OrquestradorAtualizacoesVBAs()
         Application.ScreenUpdating = True
 End Sub
 
-' Private Function BaixarArquivoGitHubPublico(url As String, caminhoLocal As String) As Boolean
-'     Dim http As Object
-'     Dim stream As Object
-
-'     ' Debug.Print "Dentro BaixarArquivoGitHubPublico: "; url
-
-'     Set http = CreateObject("WinHttp.WinHttpRequest.5.1")
-
-'     http.SetTimeouts 5000, 5000, 5000, 10000
-'     http.Open "GET", url, False
-'     http.Send
-
-'     If http.Status <> 200 Then
-'         ' Debug.Print "Erro HTTP " & http.Status & ": " & url
-'         BaixarArquivoGitHubPublico = False
-'         Exit Function
-'     End If
-
-'     Set stream = CreateObject("ADODB.Stream")
-'     stream.Type = 1
-'     stream.Open
-'     stream.Write http.ResponseBody
-'     stream.SaveToFile caminhoLocal, 2
-'     stream.Close
-
-'     ' Debug.Print "Saindo BaixarArquivoGitHubPublico"
-'     BaixarArquivoGitHubPublico = True
-' End Function
-
-Function BaixarTexto(url As String) As String
+Private Function BaixarTexto(url As String) As String
     Dim http As Object
 
     Set http = CreateObject("MSXML2.XMLHTTP")
@@ -162,7 +133,7 @@ Private Sub ImportarModulos()
 
 End Sub
 
-Function BaixarArquivo(url As String, destino As String) As Boolean
+Private Function BaixarArquivo(url As String, destino As String) As Boolean
     Dim http As Object
     Dim stream As Object
 
