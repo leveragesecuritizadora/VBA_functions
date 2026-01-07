@@ -38,7 +38,7 @@ Sub BaixarModulosViaManifestGenerico( _
     Dim nTotalArquivos As Integer
     Dim iArquivo As Integer
 
-    nTotalArquivos = UBound(linhas)
+    nTotalArquivos = UBound(linhas) + 1
 
     For i = LBound(linhas) To UBound(linhas)
         nomeArquivo = Trim(linhas(i))

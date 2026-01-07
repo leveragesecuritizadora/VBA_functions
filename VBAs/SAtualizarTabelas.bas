@@ -14,6 +14,10 @@ Sub AtualizarTabelas()
     dim teste As String
     teste = BaixarTexto("https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/manifest_sql.txt")
 
+    LimparTerminal "SQLLLL"
+
+    Debug.Print teste
+
     ' ' Conexão
     ' Set conn = CreateObject("ADODB.Connection")
     ' conn.Open _
