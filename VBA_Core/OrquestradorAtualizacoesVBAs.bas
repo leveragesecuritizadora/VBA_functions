@@ -176,14 +176,13 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
     BaixarArquivo = True
 End Function
 
-Sub OrquestraAutomacaoPlanilha()
+Private Sub OrquestraAutomacaoPlanilha()
     Dim id As Integer
     id = IDEmissao()
 
     LimparTerminal "Automação Planilha - ID: " & id
 
-    CriarBotaoComMacro "Atualizar Dados", "AtualizarTabelas|" & id, "planilha1", "Azul", 250, 50
-    CriarBotaoComMacro "Gerar Planilha de Compartilhamento", "SanitizarXLSM", "planilha1", "Verde", 500, 50
+    CriarBotaoComMacro "Atualizar Dados", "AtualizarTabelas|" & id, "Ordem de Pagamento Consolidado", "Azul", 250, 50
 
     AtualizarTabelas(id)
 End Sub
