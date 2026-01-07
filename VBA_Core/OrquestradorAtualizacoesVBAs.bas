@@ -12,7 +12,7 @@ Public Sub OrquestradorAtualizacoesVBAs()
     ' Debug.Print "rodou BaixarModulosViaManifest"
     Call ImportarModulos
     ' Debug.Print "rodou ImportarModulos"
-    call OrquestraAutomacaoPlanilha
+    OrquestraAutomacaoPlanilha
 
     Application.ScreenUpdating = True
     MsgBox Now & " Projeto VBA atualizado com sucesso!", vbInformation
