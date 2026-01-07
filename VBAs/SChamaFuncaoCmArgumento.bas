@@ -8,8 +8,8 @@ Sub ChamaFuncaoCmArgumento()
     nomeBotao = Application.Caller
     partes = Split(nomeBotao, "|")
 
-    funcao - partes(0)
-    parametro = CLng(parametro)(partes(1))
+    funcao = partes(0)
+    parametro = CInt(partes(1))
 
     If funcao = "AtualizarTabelas" Then
         AtualizarTabelas(parametro)

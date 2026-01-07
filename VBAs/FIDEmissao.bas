@@ -8,7 +8,7 @@ Function IDEmissao() As Integer
 
     id = CInt(Split(LCase(partes(0)), "e")(0))
 
-    debug.print id
+    IDEmissao = id
 
 
 
