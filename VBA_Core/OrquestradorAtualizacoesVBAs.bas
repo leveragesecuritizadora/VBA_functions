@@ -78,7 +78,7 @@ Private Sub ApagarModulos()
     Next i
 End Sub
 
-Private Sub BaixarModulosViaManifest()
+Sub BaixarModulosViaManifest()
     Dim urlManifest As String
     Dim baseUrl As String
     Dim pastaTemp As String
@@ -150,7 +150,7 @@ Private Sub ImportarModulos()
 
 End Sub
 
-Private Function BaixarArquivo(url As String, destino As String) As Boolean
+Function BaixarArquivo(url As String, destino As String) As Boolean
     Dim http As Object
     Dim stream As Object
 
