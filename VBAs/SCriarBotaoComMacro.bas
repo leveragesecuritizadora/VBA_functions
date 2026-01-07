@@ -1,37 +1,89 @@
 Attribute VB_Name = "SCriarBotaoComMacro"
+
 Sub CriarBotaoComMacro( _
     texto_botao As String, _
     funcao_botao As String, _
-    nome_aba As String _
+    nome_aba As String, _
+    cor_botao As String, _
+    Optional left_pos As Double = 50, _
+    Optional top_pos As Double = 50 _
 )
 
     Dim ws As Worksheet
     Dim btn As Shape
+    Dim larguraMin As Double
+    Dim padding As Double
 
-    Set ws = ThisWorkbook.Sheets(nome_aba) ' <-- altere para sua aba
+    padding = 20
+    larguraMin = 80
 
-    ' Cria o botão (shape)
+    Set ws = ThisWorkbook.Sheets(nome_aba)
+
+    ' Cria o botão
     Set btn = ws.Shapes.AddShape( _
         Type:=msoShapeRoundedRectangle, _
-        Left:=50, _
-        Top:=50, _
-        Width:=150, _
-        Height:=40 _
+        Left:=left_pos, _
+        Top:=top_pos, _
+        Width:=larguraMin, _
+        Height:=35 _
     )
 
-    ' Configura o visual
     With btn
-        .Name = "btnAtualizar"
+
+        .Name = "btn_" & Replace(texto_botao, " ", "_")
         .TextFrame2.TextRange.Text = texto_botao
-        .Fill.ForeColor.RGB = RGB(0, 112, 192)
-        .TextFrame2.TextRange.Font.Fill.ForeColor.RGB = RGB(255, 255, 255)
-        .TextFrame2.TextRange.Font.Size = 11
-        .TextFrame2.TextRange.Font.Bold = msoTrue
+
+        ' Fonte
+        With .TextFrame2.TextRange.Font
+            .Size = 11
+            .Bold = msoTrue
+            .Fill.ForeColor.RGB = RGB(255, 255, 255)
+        End With
+
+        ' Centralização
+        With .TextFrame2
+            .VerticalAnchor = msoAnchorMiddle
+            .TextRange.ParagraphFormat.Alignment = msoAlignCenter
+            .MarginLeft = 5
+            .MarginRight = 5
+            .MarginTop = 2
+            .MarginBottom = 2
+        End With
+
+        ' Cor do botão
+        .Fill.ForeColor.RGB = Select Case LCase(cor_botao)
+            Case "azul"
+                CorPorNome = RGB(0, 112, 192)
+            Case "cinza"
+                CorPorNome = RGB(128, 128, 128)
+            Case "verde"
+                CorPorNome = RGB(0, 176, 80)
+            Case "vermelho"
+                CorPorNome = RGB(192, 0, 0)
+            Case "laranja"
+                CorPorNome = RGB(237, 125, 49)
+            Case "preto"
+                CorPorNome = RGB(0, 0, 0)
+            Case Else
+                ' cor padrão
+                CorPorNome = RGB(0, 112, 192)
+        End Select
+
+        ' Remove borda
+        .Line.Visible = msoFalse
+
+        ' Autoajuste de largura pelo texto
+        .TextFrame2.AutoSize = msoAutoSizeShapeToFitText
+
+        ' Garante largura mínima + padding
+        If .Width < larguraMin Then .Width = larguraMin
+        .Width = .Width + padding
 
         ' Vincula a macro
         .OnAction = funcao_botao
+
     End With
 
-    LimparTerminal "Botão " & texto_botao & " criado" 
+    LimparTerminal "Botão '" & texto_botao & "' criado com sucesso"
 
 End Sub
