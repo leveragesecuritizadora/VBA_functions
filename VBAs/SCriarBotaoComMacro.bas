@@ -51,26 +51,10 @@ Sub CriarBotaoComMacro( _
         End With
 
         ' Cor do botão
-        .Fill.ForeColor.RGB = Select Case LCase(cor_botao)
-            Case "azul"
-                CorPorNome = RGB(0, 112, 192)
-            Case "cinza"
-                CorPorNome = RGB(128, 128, 128)
-            Case "verde"
-                CorPorNome = RGB(0, 176, 80)
-            Case "vermelho"
-                CorPorNome = RGB(192, 0, 0)
-            Case "laranja"
-                CorPorNome = RGB(237, 125, 49)
-            Case "preto"
-                CorPorNome = RGB(0, 0, 0)
-            Case Else
-                ' cor padrão
-                CorPorNome = RGB(0, 112, 192)
-        End Select
+        .Fill.ForeColor.RGB = CorPorNome(cor_botao)
 
         ' Remove borda
-        .Line.Visible = msoFalse
+        ' .Line.Visible = msoFalse
 
         ' Autoajuste de largura pelo texto
         .TextFrame2.AutoSize = msoAutoSizeShapeToFitText
@@ -87,3 +71,25 @@ Sub CriarBotaoComMacro( _
     LimparTerminal "Botão '" & texto_botao & "' criado com sucesso"
 
 End Sub
+
+Private Function CorPorNome(nomeCor As String) As Long
+
+    Select Case LCase(nomeCor)
+        Case "azul"
+            CorPorNome = RGB(0, 112, 192)
+        Case "cinza"
+            CorPorNome = RGB(128, 128, 128)
+        Case "verde"
+            CorPorNome = RGB(0, 176, 80)
+        Case "vermelho"
+            CorPorNome = RGB(192, 0, 0)
+        Case "laranja"
+            CorPorNome = RGB(237, 125, 49)
+        Case "preto"
+            CorPorNome = RGB(0, 0, 0)
+        Case Else
+            ' cor padrão
+            CorPorNome = RGB(0, 112, 192)
+    End Select
+
+End Function
