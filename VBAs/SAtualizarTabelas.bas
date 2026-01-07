@@ -9,12 +9,25 @@ Sub AtualizarTabelas()
     Dim arquivo As String
     Dim sql As String
     Dim nomeBase As String
+    Dim baseRepoUrl As String
+
+    LimparTerminal "ATUALIZANDO TABELASSSSS"
+
+    baseRepoUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/"
 
     ' iterando sobre os sql
-    Dim teste As String
-    teste = BaixarTexto("https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/manifest_sql.txt")
+    Dim manifesto As String
+    manifesto = BaixarTexto(baseRepoUrl & "manifest_sql.txt")
 
-    LimparTerminal "SQLLLL"
+    Dim arquivosConsultas As Variant
+    arquivosConsultas = Split(manifesto, vbLf)
+
+    For i = LBound(arquivosConsultas) to UBound(arquivosConsultas)
+        sql = BaixarTexto(baseRepoUrl & "/consultas/" & arquivosConsultas(i))
+
+        Debug.Print sql
+    Next i
+
 
     Debug.Print teste
 
