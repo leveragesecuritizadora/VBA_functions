@@ -39,9 +39,10 @@ Sub AtualizarTabelas(emissao_id As Integer)
         ' selecionando emissao
         sql = Replace(sql, "NULL", emissao_id)
 
-        Debug.Print sql
 
         nomeBase = Replace(arquivosConsultas(i), ".sql", "")
+        
+        Debug.Print "Consulta: "nomeBase
 
         ' 1. Planilha
         Set ws = GetOrCreateSheet(nomeBase)
