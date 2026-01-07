@@ -67,6 +67,8 @@ Private Sub ApagarModulos()
     Dim i As Long
     Dim vbComp As Object
 
+    LimparTerminal "Apagando Módulos Antigos"
+
     For i = ThisWorkbook.VBProject.VBComponents.Count To 1 Step -1
         Set vbComp = ThisWorkbook.VBProject.VBComponents(i)
 
@@ -110,12 +112,14 @@ Sub BaixarModulosViaManifest()
     On Error GoTo 0
     ' Debug.Print "Meio 2 BaixarModulosViaManifest"
 
+    LimparTerminal "Baixando módulos"
+
     Dim urlArquivo As String
     Dim nomeArquivoFormatado As String
     Dim nTotalArquivos As Integer
     Dim iArquivo As Integer
 
-    numTotalArquivos = UBound(linhas)+1
+    numTotalArquivos = UBound(linhas)
 
     For i = LBound(linhas) To UBound(linhas)
         nomeArquivo = Trim(linhas(i))
@@ -130,7 +134,7 @@ Sub BaixarModulosViaManifest()
             If Not BaixarArquivo(urlArquivo, nomeArquivoFormatado) Then
                 Debug.Print "Erro ao baixar " & nomeArquivo, vbCritical
             Else
-                Debug.Print iArquivo &"/"& nTotalArquivos & " - " &  nomeArquivo & " Baixado"
+                Debug.Print iArquivo &"/"& nTotalArquivos & " - " &  nomeArquivo
             End If
         End If
     Next i
@@ -199,3 +203,9 @@ Function BaixarArquivo(url As String, destino As String) As Boolean
     ' Debug.Print "Dentro 3 BaixarArquivo: "; url
     BaixarArquivo = True
 End Function
+
+Private Sub LimparTerminal(mensagem As String) 
+    Debug.Print String(80, "=")
+    Debug.Print Now & " " & mensagem
+    Debug.Print String(80, "=")
+End Sub

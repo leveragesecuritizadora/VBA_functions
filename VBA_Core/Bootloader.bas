@@ -16,7 +16,7 @@ Public Sub RodarBootloader()
         Exit Sub
     End If
 
-    Debug.Print Now() & " =====> " & "Orquestrador Baixado!"
+    LimparTerminal "Orquestrador baixado"
 
     ImportarOrquestrador caminhoCore
 
@@ -59,4 +59,10 @@ Private Sub ImportarOrquestrador(caminho As String)
     On Error GoTo 0
 
     ThisWorkbook.VBProject.VBComponents.Import caminho
+End Sub
+
+Private Sub LimparTerminal(mensagem As String) 
+    Debug.Print String(80, "=")
+    Debug.Print Now & " " & mensagem
+    Debug.Print String(80, "=")
 End Sub
