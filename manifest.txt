@@ -39,6 +39,7 @@ VBAs/SAtualizarTabelas.bas
 VBAs/SBaixarArquivo.bas
 VBAs/SBaixarTexto.bas
 VBAs/SCabecalhoDaConsulta.bas
+VBAs/SChamaFuncaoCmArgumento.bas
 VBAs/SCriarBotaoComMacro.bas
 VBAs/SLimparTerminal.bas
 VBAs/SMeuPrint.bas

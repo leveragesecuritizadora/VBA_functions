@@ -2,7 +2,7 @@ Attribute VB_Name = "SCriarBotaoComMacro"
 
 Sub CriarBotaoComMacro( _
     texto_botao As String, _
-    funcao_botao As String, _
+    funcao_argumento As String, _
     nome_aba As String, _
     cor_botao As String, _
     Optional left_pos As Double = 50, _
@@ -30,7 +30,7 @@ Sub CriarBotaoComMacro( _
 
     With btn
 
-        .Name = "btn_" & Replace(texto_botao, " ", "_")
+        .Name = funcao_argumento
         .TextFrame2.TextRange.Text = texto_botao
 
         ' Fonte
@@ -64,7 +64,7 @@ Sub CriarBotaoComMacro( _
         .Width = .Width + padding
 
         ' Vincula a macro
-        .OnAction = funcao_botao
+        .OnAction = "ChamaFuncaoCmArgumento"
 
     End With
 
