@@ -37,7 +37,6 @@ VBAs/SaldoFR.bas
 VBAs/SaldoMinFD.bas
 VBAs/SaldoMinFR.bas
 VBAs/SAtualizarTabelas.bas
-VBAs/SAtualizarTabelasbkp.bas
 VBAs/SBaixarArquivo.bas
 VBAs/SBaixarModulosViaManifestGenerico.bas
 VBAs/SCabecalhoDaConsulta.bas
