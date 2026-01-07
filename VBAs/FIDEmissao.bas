@@ -1,6 +1,6 @@
 Attribute VB_Name = "FIDEmissao"
 Function IDEmissao() As Integer
-    Dim id As String
+    Dim id As Integer
     Dim partes() As String
 
     partes = Split(ThisWorkbook.Name, ".")
