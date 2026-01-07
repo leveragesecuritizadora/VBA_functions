@@ -37,7 +37,7 @@ Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
     Dim nTotalArquivos As Integer
     Dim iArquivo As Integer
 
-    numTotalArquivos = UBound(linhas)+1
+    nTotalArquivos = UBound(linhas)
 
     For i = LBound(linhas) To UBound(linhas)
         nomeArquivo = Trim(linhas(i))
@@ -52,7 +52,7 @@ Sub BaixarModulosViaManifestGenerico(url_manifest_generico As string)
             If Not BaixarArquivo(urlArquivo, nomeArquivoFormatado) Then
                 Debug.Print "Erro ao baixar " & nomeArquivo, vbCritical
             Else
-                Debug.Print iArquivo &"/"& nTotalArquivos & " - " &  nomeArquivo & " Baixado"
+                Debug.Print iArquivo &"/"& nTotalArquivos & " - " &  nomeArquivo
             End If
         End If
     Next i
