@@ -80,7 +80,7 @@ Private Sub ApagarModulos()
     Next i
 End Sub
 
-Sub BaixarModulosViaManifest()
+Private Sub BaixarModulosViaManifest()
     Dim urlManifest As String
     Dim baseUrl As String
     Dim pastaTemp As String
