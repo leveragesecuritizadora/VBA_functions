@@ -8,6 +8,7 @@ VBAs/FBuscarLinha.bas
 VBAs/FFormatarDataString.bas
 VBAs/FGetOrCreateSheet.bas
 VBAs/FGetOrCreateTable.bas
+VBAs/FIDEmissao.bas
 VBAs/FImplementacaoBuscarInfosEmissao.bas
 VBAs/FImplementacaoBuscarInfosUnidades.bas
 VBAs/FLerArquivoTexto.bas
