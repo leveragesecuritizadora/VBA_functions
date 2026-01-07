@@ -6,7 +6,7 @@ Function IDEmissao() As Integer
     partes = Split(ThisWorkbook.Name, ".")
     partes = Split(partes(0), " ")
 
-    id = CInt(Split(LCase(partes(0)), "e")(0))
+    id = CInt(Split(LCase(partes(0)), "id")(0))
 
     IDEmissao = id
 
