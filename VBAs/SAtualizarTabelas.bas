@@ -1,5 +1,5 @@
 Attribute VB_Name = "SAtualizarTabelas"
-Sub AtualizarTabelas()
+Sub AtualizarTabelas(emissao_id As Integer)
 
     Dim conn As Object
     Dim rs As Object
@@ -35,6 +35,9 @@ Sub AtualizarTabelas()
 
     For i = LBound(arquivosConsultas) to UBound(arquivosConsultas)
         sql = BaixarTexto(baseRepoUrl & "/consultas/" & arquivosConsultas(i))
+
+        ' selecionando emissao
+        sql = Replace(sql, "NULL", emissao_id)
 
         Debug.Print sql
 
