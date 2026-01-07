@@ -12,9 +12,11 @@ Public Sub RodarBootloader()
     If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
 
     If Not BaixarArquivo(url, caminhoCore) Then
-        MsgBox "Falha ao baixar OrquestradorAtualizacoesVBAs.bas", vbCritical
+        Debug.Print "Falha ao baixar OrquestradorAtualizacoesVBAs.bas", vbCritical
         Exit Sub
     End If
+
+    Debug.Print Now() & " =====> " & "Orquestrador Baixado!"
 
     ImportarOrquestrador caminhoCore
 
@@ -33,7 +35,7 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
 
     ' If http.Status <> 200 Then Exit Function
     If http.Status <> 200 Then
-        MsgBox "HTTP Status: " & http.Status & vbCrLf & url, vbCritical
+        Debug.Print "HTTP Status: " & http.Status & vbCrLf & url, vbCritical
         BaixarArquivo = False
         Exit Function
     End If

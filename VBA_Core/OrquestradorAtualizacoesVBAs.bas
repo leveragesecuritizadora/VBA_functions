@@ -112,9 +112,15 @@ Sub BaixarModulosViaManifest()
 
     Dim urlArquivo As String
     Dim nomeArquivoFormatado As String
+    Dim nTotalArquivos As Integer
+    Dim iArquivo As Integer
+
+    numTotalArquivos = UBound(linhas)+1
 
     For i = LBound(linhas) To UBound(linhas)
         nomeArquivo = Trim(linhas(i))
+        iArquivo = i+1
+
 
         urlArquivo = baseUrl & nomeArquivo
         nomeArquivoFormatado = pastaTemp & Replace(nomeArquivo, "VBAs", "")
@@ -123,6 +129,8 @@ Sub BaixarModulosViaManifest()
         If nomeArquivo <> "" Then
             If Not BaixarArquivo(urlArquivo, nomeArquivoFormatado) Then
                 Debug.Print "Erro ao baixar " & nomeArquivo, vbCritical
+            Else
+                Debug.Print iArquivo &"/"& nTotalArquivos & " - " &  nomeArquivo & " Baixado"
             End If
         End If
     Next i
