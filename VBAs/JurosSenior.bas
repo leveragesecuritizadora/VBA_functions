@@ -5,7 +5,7 @@ Public Function PreencherJurosSenior( _
 ) As Variant
 
     Debug.Print "JS"
-    PreencherJurosSenior = BuscarInformacoesAcumuladas(mes_offset, coluna_data, "Juros", 3, "senior")
+    PreencherJurosSenior = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 3, Array("*", "senior"))
 
 End Function
 

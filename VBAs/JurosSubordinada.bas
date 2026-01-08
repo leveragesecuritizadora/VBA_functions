@@ -5,7 +5,7 @@ Public Function PreencherJurosSubordinada( _
 ) As Variant
 
     ' Debug.Print "JSub"
-    PreencherJurosSubordinada = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 3, "subordinada")
+    PreencherJurosSubordinada = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 3, Array("*", "subordinada"))
 
 End Function
 
