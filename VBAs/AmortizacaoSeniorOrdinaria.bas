@@ -5,6 +5,6 @@ Public Function PreencherAmortizacaoSeniorOrdinaria( _
 ) As Variant
 
    ' PrintIniFuncao("amort senior odr")
-    PreencherAmortizacaoSeniorOrdinaria = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 5, "senior")
+    PreencherAmortizacaoSeniorOrdinaria = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 5, Array("*","senior"))
 
 End Function

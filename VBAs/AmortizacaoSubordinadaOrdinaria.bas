@@ -5,6 +5,6 @@ Public Function PreencherAmortizacaoSubordinadaOrdinaria( _
 ) As Variant
 
    ' PrintIniFuncao("amort ord sub")
-    PreencherAmortizacaoSubordinadaOrdinaria = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 5, "subordinada")
+    PreencherAmortizacaoSubordinadaOrdinaria = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 5, Array("*","subordinada"))
 
 End Function

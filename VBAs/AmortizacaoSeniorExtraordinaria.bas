@@ -5,6 +5,6 @@ Public Function PreencherAmexSenior( _
 ) As Variant
 
    ' PrintIniFuncao("AMEXSenior")
-    PreencherAmexSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 6, "senior")
+    PreencherAmexSenior = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 6, Array("*","senior"))
 
 End Function

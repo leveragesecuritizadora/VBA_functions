@@ -5,6 +5,6 @@ Public Function PreencherAmexSubordinada( _
 ) As Variant
 
    ' PrintIniFuncao("AMEXSub")
-    PreencherAmexSubordinada = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 6, "subordinada")
+    PreencherAmexSubordinada = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 6, Array("*","subordinada"))
 
 End Function
