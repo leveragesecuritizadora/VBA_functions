@@ -132,7 +132,7 @@ Sub ChamaFuncaoCmArgumento()
     Else
 
         If nomeBotao = "AtualizarModulos" Then
-            AtualizarModulos()
+            Call AtualizarModulos
         End If
     
     End If
