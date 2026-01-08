@@ -12,6 +12,7 @@ VBAs/FIDEmissao.bas
 VBAs/FImplementacaoBuscarInfosUnidades.bas
 VBAs/FLerArquivoTexto.bas
 VBAs/FNomeEmissao.bas
+VBAs/FPreencherJurosSerie.bas
 VBAs/FSomarValoresMultiplasLinhas.bas
 VBAs/FSomaValores.bas
 VBAs/FValorAcumulado.bas
