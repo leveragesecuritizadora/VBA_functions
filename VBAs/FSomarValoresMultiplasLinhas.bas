@@ -4,7 +4,7 @@ Function SomarValoresMultiplasLinhas( _
     coluna_data As Integer, _
     planilha_dados As String, _
     coluna_dados As Integer, _
-    Optional sufixo_busca As Variant _
+    Optional sufixo_busca As Variant = "" _
 ) As Variant
 
     Dim wsAtual As Worksheet
@@ -31,10 +31,12 @@ Function SomarValoresMultiplasLinhas( _
         Exit Function
     End If
     
-    If UBound(sufixo_busca) > 0 Then
+    If IsArray(sufixo_busca) Then
         string_busca = FormatarDataString(dataBase, mes_offset) &  " - " & Join(sufixo_busca, " - ")
+        Debug.Print "SomarValores - Concatenando vetor"
     Else 
         string_busca = FormatarDataString(dataBase, mes_offset)
+        Debug.Print "SomarValores - não teve vetor"
     End If
 
     Debug.print string_busca
