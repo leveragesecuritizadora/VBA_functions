@@ -15,10 +15,7 @@ def update_manifest():
 
     with open(manifest_path, 'w') as f:
         for i, bas_file in enumerate(bas_files):
-            if i == len(bas_file) - 1:
-                f.write(bas_file)
-            else:
-                f.write(bas_file + '\n')
+            f.write(bas_file + '\n')
 
     print(f"Updated '{manifest_path}' with {len(bas_files)} .bas file paths from '{vbas_dir}'.")
 
