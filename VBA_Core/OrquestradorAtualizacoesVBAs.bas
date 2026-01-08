@@ -12,7 +12,7 @@ Public Sub OrquestradorAtualizacoesVBAs()
     ' Debug.Print "rodou BaixarModulosViaManifest"
     Call ImportarModulos
     ' Debug.Print "rodou ImportarModulos"
-    OrquestraAutomacaoPlanilha
+    OrquestradorAutomacaoPlanilha
 
     Application.ScreenUpdating = True
     MsgBox Now & " Projeto VBA atualizado com sucesso!", vbInformation
@@ -176,7 +176,7 @@ Private Function BaixarArquivo(url As String, destino As String) As Boolean
     BaixarArquivo = True
 End Function
 
-Private Sub OrquestraAutomacaoPlanilha()
+Private Sub OrquestradorAutomacaoPlanilha()
     Dim id As Integer
     id = IDEmissao()
 
