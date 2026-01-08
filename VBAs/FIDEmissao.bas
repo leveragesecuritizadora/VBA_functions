@@ -1,12 +1,17 @@
 Attribute VB_Name = "FIDEmissao"
-Function IDEmissao() As Integer
-    Dim id As Integer
+
+Function IDEmissao() As Long
+
+    Dim conn As Object
+    Dim rs As Object
+    Dim sql As String
     Dim emissao As String
 
-    Debug.Print emissao
-
+    ' =========================
+    ' 1. Trata o nome do arquivo
+    ' =========================
     emissao = LCase(ThisWorkbook.Name)
-    ' MeuPrint nomePlanilha
+
     emissao = Replace(emissao, "cri ", "")
     emissao = Replace(emissao, "temp", "")
     emissao = Replace(emissao, "_", "")
@@ -18,6 +23,46 @@ Function IDEmissao() As Integer
     emissao = Replace(emissao, "xlsm", "")
     emissao = Trim(Replace(emissao, "xlsx", ""))
 
-    Debug.Print emissao
+    ' =========================
+    ' 2. Monta SQL
+    ' =========================
+    sql = "SELECT DW.getEmissaoId('" & emissao & "') AS emissao_id;"
+
+    ' =========================
+    ' 3. Conecta no BD
+    ' =========================
+    Set conn = CreateObject("ADODB.Connection")
+    conn.Open _
+        "Provider=MSOLEDBSQL;" & _
+        "Server=sqlserver-emissions-prod.database.windows.net,1433;" & _
+        "Database=sqldb-emissions-dw-prod;" & _
+        "User ID=app_read;" & _
+        "Password=JeLBfsQRPt3e5;" & _
+        "Encrypt=Yes;" & _
+        "TrustServerCertificate=Yes;"
+
+    ' =========================
+    ' 4. Executa
+    ' =========================
+    Set rs = CreateObject("ADODB.Recordset")
+    rs.Open sql, conn
+
+    ' =========================
+    ' 5. Retorna o valor
+    ' =========================
+    If Not rs.EOF Then
+        IDEmissao = CLng(rs.Fields(0).Value)
+    Else
+        IDEmissao = 0
+    End If
+
+    ' =========================
+    ' 6. Limpa
+    ' =========================
+    rs.Close
+    conn.Close
+
+    Set rs = Nothing
+    Set conn = Nothing
 
 End Function
