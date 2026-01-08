@@ -80,7 +80,7 @@ Private Sub ApagarModulos()
         If vbComp.Type = 1 Then
 
             ' Nunca apagar o bootloader nem o orquestrador (mesmo se tiver sufixo)
-            If Not vbComp.Name Like "Bootloader*" Then
+            If Not vbComp.Name = "Bootloader" Then
 
                 Debug.Print "Removendo módulo: "; vbComp.Name
                 ThisWorkbook.VBProject.VBComponents.Remove vbComp
