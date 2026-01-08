@@ -4,7 +4,7 @@ Function PreencherRecebimentosAtrasadosTU( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-   ' PrintIniFuncao("R. Atrasados TU")
+   ' Debug.Print("R. Atrasados TU")
    unidade = NormalizarTexto(unidade)
     PreencherRecebimentosAtrasadosTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 3, Array("*"))
 

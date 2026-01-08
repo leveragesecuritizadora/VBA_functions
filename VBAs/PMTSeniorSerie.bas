@@ -5,7 +5,7 @@ Public Function PreencherPMTSeniorSerie( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    PrintIniFuncao("PMTSeniorSerie")
+    Debug.Print("PMTSeniorSerie")
     PreencherPMTSeniorSerie = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array(n_serie, "senior")) 
 
 End Function

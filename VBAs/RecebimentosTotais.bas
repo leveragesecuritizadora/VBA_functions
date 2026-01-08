@@ -4,7 +4,7 @@ Function PreencherRecebimentosTotais( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-'    PrintIniFuncao("R. Totais")
+'    Debug.Print("R. Totais")
    unidade = NormalizarTexto(unidade)
    PreencherRecebimentosTotais = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 5, Array(unidade))
 

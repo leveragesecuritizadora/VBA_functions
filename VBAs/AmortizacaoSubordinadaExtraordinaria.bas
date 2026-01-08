@@ -4,7 +4,7 @@ Public Function PreencherAmexSubordinada( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-   ' PrintIniFuncao("AMEXSub")
+   ' Debug.Print("AMEXSub")
     PreencherAmexSubordinada = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 6, Array("*","subordinada"))
 
 End Function

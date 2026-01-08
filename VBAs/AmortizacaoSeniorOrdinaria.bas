@@ -4,7 +4,7 @@ Public Function PreencherAmortizacaoSeniorOrdinaria( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-   ' PrintIniFuncao("amort senior odr")
+   ' Debug.Print("amort senior odr")
     PreencherAmortizacaoSeniorOrdinaria = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 5, Array("*","senior"))
 
 End Function

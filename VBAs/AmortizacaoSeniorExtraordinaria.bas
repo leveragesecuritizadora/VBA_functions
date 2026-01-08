@@ -4,7 +4,7 @@ Public Function PreencherAmexSenior( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-   ' PrintIniFuncao("AMEXSenior")
+   ' Debug.Print("AMEXSenior")
     PreencherAmexSenior = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 6, Array("*","senior"))
 
 End Function

@@ -7,7 +7,7 @@ Function PreencherRecebimentosAtrasados( _
 
     
 
-   ' PrintIniFuncao("R. Atrasados")
+   ' Debug.Print("R. Atrasados")
    unidade = NormalizarTexto(unidade)
     PreencherRecebimentosAtrasados = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 3, Array(unidade))
 

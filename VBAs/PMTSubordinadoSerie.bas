@@ -5,7 +5,7 @@ Public Function PreencherPMTSubordinadoSerie( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    PrintIniFuncao("PMTSubordinadoSerie")
+    Debug.Print("PMTSubordinadoSerie")
     PreencherPMTSubordinadoSerie = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array(n_serie, "subordinado")) 
 
 End Function
