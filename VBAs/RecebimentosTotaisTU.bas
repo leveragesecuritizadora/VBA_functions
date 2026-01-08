@@ -5,6 +5,6 @@ Function PreencherRecebimentosTotaisTU( _
 ) As Variant
 
    ' PrintIniFuncao("R. Totais TU")
-    PreencherRecebimentosTotaisTU = ImplementacaoBuscarInfosUnidades(mes_offset, coluna_data, "Recebimentos", 5)
+    PreencherRecebimentosTotaisTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 5)
 
 End Function

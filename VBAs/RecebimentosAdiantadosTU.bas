@@ -5,6 +5,6 @@ Function PreencherRecebimentosAdiantadosTU( _
 ) As Variant
 
    ' PrintIniFuncao("R. Adiantados TU")
-    PreencherRecebimentosAdiantadosTU = ImplementacaoBuscarInfosUnidades(mes_offset, coluna_data, "Recebimentos", 2)
+    PreencherRecebimentosAdiantadosTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 2)
 
 End Function
