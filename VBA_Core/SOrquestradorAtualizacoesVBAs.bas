@@ -36,21 +36,32 @@ Private Function BaixarTexto(url As String) As String
 End Function
 
 Private Sub ApagarModulos()
-    Dim i As Long
     Dim vbComp As Object
 
-    LimparTerminal "Apagando Módulos Antigos"
+    LimparTerminal "Apagando módulos antigos (modo agressivo)"
 
-    For i = ThisWorkbook.VBProject.VBComponents.Count To 1 Step -1
-        Set vbComp = ThisWorkbook.VBProject.VBComponents(i)
+    For Each vbComp In ThisWorkbook.VBProject.VBComponents
 
-        If vbComp.Type = 1 _
-           And vbComp.Name <> "Bootloader" _
-           And vbComp.Name <> "SOrquestradorAtualizacoesVBAs" Then
-            ThisWorkbook.VBProject.VBComponents.Remove vbComp
+        ' Apenas módulos padrão (.bas)
+        If vbComp.Type = 1 Then
+
+            ' Nunca apagar o bootloader nem o orquestrador (mesmo se tiver sufixo)
+            If Not vbComp.Name Like "Bootloader*" _
+               And Not vbComp.Name Like "OrquestradorAtualizacoesVBAs*" Then
+
+                Debug.Print "Removendo módulo: "; vbComp.Name
+                ThisWorkbook.VBProject.VBComponents.Remove vbComp
+
+            Else
+                Debug.Print "Preservado: "; vbComp.Name
+            End If
+
         End If
-    Next i
+
+    Next vbComp
+
 End Sub
+
 
 Private Sub BaixarModulosViaManifest()
     Dim urlManifest As String

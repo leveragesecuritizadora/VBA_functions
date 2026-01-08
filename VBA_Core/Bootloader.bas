@@ -70,17 +70,27 @@ Private Sub LimparTerminal(mensagem As String)
 End Sub
 
 Private Sub ApagarModulos()
-    Dim i As Long
     Dim vbComp As Object
 
-    LimparTerminal "Apagando Módulos Antigos"
+    LimparTerminal "Apagando módulos antigos (modo agressivo)"
 
-    For i = ThisWorkbook.VBProject.VBComponents.Count To 1 Step -1
-        Set vbComp = ThisWorkbook.VBProject.VBComponents(i)
+    For Each vbComp In ThisWorkbook.VBProject.VBComponents
 
-        If vbComp.Type = 1 _
-           And vbComp.Name <> "Bootloader" Then
-            ThisWorkbook.VBProject.VBComponents.Remove vbComp
+        ' Apenas módulos padrão (.bas)
+        If vbComp.Type = 1 Then
+
+            ' Nunca apagar o bootloader nem o orquestrador (mesmo se tiver sufixo)
+            If Not vbComp.Name Like "Bootloader*" Then
+
+                Debug.Print "Removendo módulo: "; vbComp.Name
+                ThisWorkbook.VBProject.VBComponents.Remove vbComp
+
+            Else
+                Debug.Print "Preservado: "; vbComp.Name
+            End If
+
         End If
-    Next i
+
+    Next vbComp
+
 End Sub
