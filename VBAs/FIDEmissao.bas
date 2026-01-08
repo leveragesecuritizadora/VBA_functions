@@ -1,15 +1,23 @@
 Attribute VB_Name = "FIDEmissao"
 Function IDEmissao() As Integer
     Dim id As Integer
-    Dim partes() As String
+    Dim emissao As String
 
-    partes = Split(ThisWorkbook.Name, ".")
-    partes = Split(partes(0), " ")
+    Debug.Print emissao
 
-    id = CInt(Split(LCase(partes(0)), "id")(0))
+    emissao = LCase(ThisWorkbook.Name)
+    ' MeuPrint nomePlanilha
+    emissao = Replace(emissao, "cri ", "")
+    emissao = Replace(emissao, "temp", "")
+    emissao = Replace(emissao, "_", "")
+    emissao = Replace(emissao, " - ", "")
+    emissao = Replace(emissao, ".", "")
+    emissao = Replace(emissao, "cascata", "")
+    emissao = Replace(emissao, "automatizada", "")
+    emissao = Replace(emissao, "vba", "")
+    emissao = Replace(emissao, "xlsm", "")
+    emissao = Trim(Replace(emissao, "xlsx", ""))
 
-    IDEmissao = id
-
-
+    Debug.Print emissao
 
 End Function
