@@ -1,6 +1,7 @@
+VBAs/AMEXSerie.bas
+VBAs/AmortizacaoOrdinariaSerie.bas
 VBAs/AmortizacaoSeniorExtraordinaria.bas
 VBAs/AmortizacaoSeniorOrdinaria.bas
-VBAs/AmortizacaoSerie.bas
 VBAs/AmortizacaoSubordinadaExtraordinaria.bas
 VBAs/AmortizacaoSubordinadaOrdinaria.bas
 VBAs/CotasSenior.bas
