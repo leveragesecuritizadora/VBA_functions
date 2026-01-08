@@ -1,5 +1,5 @@
 Attribute VB_Name = "SApagarModulos"
-Private Sub ApagarModulos()
+Public Sub ApagarModulos()
     Dim i As Long
     Dim vbComp As Object
 

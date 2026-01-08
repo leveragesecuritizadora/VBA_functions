@@ -5,14 +5,14 @@ Public Sub RodarBootloader()
     Dim pastaTemp As String
     Dim caminhoCore As String
 
-    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/emissao_unica/VBA_Core/OrquestradorAtualizacoesVBAs.bas"
+    url = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/emissao_unica/VBA_Core/SOrquestradorAtualizacoesVBAs.bas"
     pastaTemp = Environ("TEMP") & "\vba\"
-    caminhoCore = pastaTemp & "OrquestradorAtualizacoesVBAs.bas"
+    caminhoCore = pastaTemp & "SOrquestradorAtualizacoesVBAs.bas"
 
     If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
 
     If Not BaixarArquivo(url, caminhoCore) Then
-        Debug.Print "Falha ao baixar OrquestradorAtualizacoesVBAs.bas", vbCritical
+        Debug.Print "Falha ao baixar SOrquestradorAtualizacoesVBAs.bas", vbCritical
         Exit Sub
     End If
 
@@ -21,7 +21,7 @@ Public Sub RodarBootloader()
     ImportarOrquestrador caminhoCore
 
     ' chama o orquestrador REAL
-    Application.Run "OrquestradorAtualizacoesVBAs.OrquestradorAtualizacoesVBAs"
+    Application.Run "SOrquestradorAtualizacoesVBAs.OrquestradorAtualizacoesVBAs"
     ' Debug.Print "aquiiii"
 End Sub
 
@@ -65,4 +65,20 @@ Private Sub LimparTerminal(mensagem As String)
     Debug.Print String(80, "=")
     Debug.Print Now & " " & mensagem
     Debug.Print String(80, "=")
+End Sub
+
+Private Sub ApagarModulos()
+    Dim i As Long
+    Dim vbComp As Object
+
+    LimparTerminal "Apagando Módulos Antigos"
+
+    For i = ThisWorkbook.VBProject.VBComponents.Count To 1 Step -1
+        Set vbComp = ThisWorkbook.VBProject.VBComponents(i)
+
+        If vbComp.Type = 1 _
+           And vbComp.Name <> "Bootloader" Then
+            ThisWorkbook.VBProject.VBComponents.Remove vbComp
+        End If
+    Next i
 End Sub
