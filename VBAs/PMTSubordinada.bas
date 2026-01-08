@@ -5,7 +5,7 @@ Public Function PreencherPMTSubordinada( _
 ) As Variant
 
     ' Debug.Print Now() & " ======================PMTSub"
-    PreencherPMTSubordinada = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 7, "subordinada")
+    PreencherPMTSubordinada = tiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array("*", "subordinada")) 
 
 End Function
 
