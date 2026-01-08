@@ -46,7 +46,7 @@ Private Sub ApagarModulos()
 
         If vbComp.Type = 1 _
            And vbComp.Name <> "Bootloader" _
-           And vbComp.Name <> "OrquestradorAtualizacoesVBAs" Then
+           And vbComp.Name <> "SOrquestradorAtualizacoesVBAs" Then
             ThisWorkbook.VBProject.VBComponents.Remove vbComp
         End If
     Next i
@@ -300,7 +300,7 @@ Private Function BotaoExiste(ws As Worksheet, nomeShape As String) As Boolean
     On Error GoTo 0
 End Function
 
-Sub ChamaFuncaoCmArgumento()
+Public Sub ChamaFuncaoCmArgumento()
     Dim nomeBotao As String
     Dim partes() As String
     Dim parametro As String
