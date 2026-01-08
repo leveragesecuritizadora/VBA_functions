@@ -27,6 +27,7 @@ VBAs/PMTSenior.bas
 VBAs/PMTSeniorSerie.bas
 VBAs/PMTSubordinada.bas
 VBAs/PMTSubordinadoSerie.bas
+VBAs/ProporcaoUnidade.bas
 VBAs/PUCorrigidoSenior.bas
 VBAs/PUCorrigidoSubordinada.bas
 VBAs/RecebimentosAdiantados.bas
