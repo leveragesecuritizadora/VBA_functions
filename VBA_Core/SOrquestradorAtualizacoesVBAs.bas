@@ -335,11 +335,6 @@ Public Sub ChamaFuncaoCmArgumento()
         End If
     
     Else
-
-        If nomeBotao = "AtualizarModulos" Then
-            Call AtualizarModulos
-        End If
-
         If nomeBotao = "RodarBootloader" Then
             Call RodarBootloader
         End If
