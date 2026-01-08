@@ -4,7 +4,7 @@ Public Function PreencherPMTSenior( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    ' PrintIniFuncao("PMTSenior")
-    PreencherPMTSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 7, "senior") 
+    PrintIniFuncao("PMTSenior")
+    PreencherPMTSenior = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array("*", "senior")) 
 
 End Function
