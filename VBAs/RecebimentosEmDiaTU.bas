@@ -5,6 +5,6 @@ Function PreencherRecebimentosEmDiaTU(  _
 ) As Variant
 
    ' PrintIniFuncao("R. Em dia TU")
-    PreencherRecebimentosEmDiaTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 4)
+    PreencherRecebimentosEmDiaTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 4, Array("*"))
 
 End Function
