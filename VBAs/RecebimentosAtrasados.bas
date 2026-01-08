@@ -8,7 +8,7 @@ Function PreencherRecebimentosAtrasados( _
     
 
    ' PrintIniFuncao("R. Atrasados")
-    PreencherRecebimentosAtrasados = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Recebimentos", 3, unidade)
+    PreencherRecebimentosAtrasados = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 3, Array(unidade))
 
 End Function
 
