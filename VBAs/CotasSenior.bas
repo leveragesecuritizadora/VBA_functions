@@ -5,6 +5,6 @@ Function PreencherCotasSenior( _
 ) As Variant
 
    ' Debug.Print "Cotas Senior"
-    PreencherCotasSenior = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 2, "senior")
+    PreencherCotasSenior = ValorPrimeiroMatch(mes_offset, coluna_data, "Juros", 2, Array("*", "senior"))
 
 End Function

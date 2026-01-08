@@ -5,6 +5,6 @@ Function PreencherCotasSubordinada( _
 ) As Variant
 
    ' Debug.Print "Cotas Subordinada"
-    PreencherCotasSubordinada = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Juros", 2, "subordinada")
+    PreencherCotasSubordinada = ValorPrimeiroMatch(mes_offset, coluna_data, "Juros", 2, Array("*", "subordinada"))
 
 End Function
