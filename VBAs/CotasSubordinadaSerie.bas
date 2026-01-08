@@ -1,5 +1,6 @@
 Attribute VB_Name = "CotasSubordinada"
 Function PreencherCotasSubordinada( _
+    n_serie As Integer, _
     Optional mes_offset As Variant = -1, _
     Optional coluna_data As Integer = 2 _
 ) As Variant
