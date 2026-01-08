@@ -1,4 +1,4 @@
-Attribute VB_Name = "ValorPrimeiroMatch"
+Attribute VB_Name = "FValorPrimeiroMatch"
 Function ValorPrimeiroMatch( _
     mes_offset As Variant, _
     coluna_data As Integer, _
