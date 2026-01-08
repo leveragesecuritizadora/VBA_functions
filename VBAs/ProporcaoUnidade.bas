@@ -1,6 +1,6 @@
 Attribute VB_Name = "ProporcaoUnidade"
-
-Public Function ProporcaoUnidade( _
+Attribute VB_Name = "ProporcaoUnidade"
+Public Function PreencherProporcaoUnidade( _
     nome_unidade As String, _
     Optional mes_offset As Variant = -1, _
     Optional coluna_data As Integer = 2 _
@@ -15,5 +15,5 @@ Public Function ProporcaoUnidade( _
     Debug.Print "recebimentosTotais: "; recebimentosTotais
     Debug.Print "recebimentoUnidade: "; recebimentoUnidade
 
-    ProporcaoUnidade = recebimentoUnidade/recebimentosTotais
+    PreencherProporcaoUnidade = recebimentoUnidade/recebimentosTotais
 End Function

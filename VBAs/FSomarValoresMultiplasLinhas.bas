@@ -33,13 +33,13 @@ Function SomarValoresMultiplasLinhas( _
     
     If IsArray(sufixo_busca) Then
         string_busca = FormatarDataString(dataBase, mes_offset) &  " - " & Join(sufixo_busca, " - ")
-        Debug.Print "SomarValores - Concatenando vetor"
+        ' Debug.Print "SomarValores - Concatenando vetor"
     Else 
         string_busca = FormatarDataString(dataBase, mes_offset)
-        Debug.Print "SomarValores - não teve vetor"
+        ' Debug.Print "SomarValores - não teve vetor"
     End If
 
-    Debug.print string_busca
+    ' Debug.print string_busca
 
     somador = 0
     Set planilhaDados = ThisWorkbook.Worksheets(planilha_dados)
@@ -49,12 +49,12 @@ Function SomarValoresMultiplasLinhas( _
     End If
 
     For Each cel In planilhaDados.Range("A1:A" &  planilhaDados.Cells(planilhaDados.Rows.Count, "A").End(xlUp).Row)
-        Debug.print "----"
-        Debug.print "Buscado: " string_busca 
-        Debug.print "Val atual: " cel.Value
+        ' Debug.print "----"
+        ' Debug.print "Buscado: " string_busca 
+        ' Debug.print "Val atual: " cel.Value
         If CStr(cel.Value) LIKE string_busca Then
             If IsNumeric(planilhaDados.Cells(cel.Row, coluna_dados).Value) Then
-                Debug.Print "Bateu, somando"
+                ' Debug.Print "Bateu, somando"
                 somador = somador + planilhaDados.Cells(cel.Row, coluna_dados).Value
             End If
         End If
@@ -63,7 +63,7 @@ Function SomarValoresMultiplasLinhas( _
     resultado = somador
 
     If resultado = False Then
-       ' Debug.Print "Erro"
+    '    Debug.Print "Erro"
         SomarValoresMultiplasLinhas = 0
         Exit Function
     End If

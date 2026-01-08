@@ -35,7 +35,7 @@ Function ValorPrimeiroMatch( _
         string_busca = FormatarDataString(dataBase, mes_offset)
     End If
 
-    Debug.print string_busca
+    ' Debug.print string_busca
 
     somador = 0
     Set planilhaDados = ThisWorkbook.Worksheets(planilha_dados)
@@ -47,16 +47,16 @@ Function ValorPrimeiroMatch( _
     linhaEncontrada = Application.Match(string_busca, planilhaDados.Range("A:A"), 0)
 
     If IsError(linhaEncontrada) Then
-        Debug.print "ValorPrimeiroMatch - Linha não encontrada"
+        ' Debug.print "ValorPrimeiroMatch - Linha não encontrada"
         ValorPrimeiroMatch = 0
         Exit Function
     Else
-        Debug.print "Linha encontrada"
-        Debug.Print "ValorPrimeiroMatch - ID: "; string_busca
-        Debug.Print "ValorPrimeiroMatch - LE: "; linhaEncontrada
+        ' Debug.print "Linha encontrada"
+        ' Debug.Print "ValorPrimeiroMatch - ID: "; string_busca
+        ' Debug.Print "ValorPrimeiroMatch - LE: "; linhaEncontrada
     End If
 
-    Debug.print planilhaDados.Cells(linhaEncontrada, coluna_dados).Value
+    ' Debug.print planilhaDados.Cells(linhaEncontrada, coluna_dados).Value
 
     ValorPrimeiroMatch = planilhaDados.Cells(linhaEncontrada, coluna_dados).Value
 
