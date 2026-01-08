@@ -51,8 +51,7 @@ Function BuscarInformacoesAcumuladas( _
 
     ' Set planilhaDados = ThisWorkbook.Sheets(planilha_dados)
     Debug.Print planilha_dados
-    Set wb_aux = Application.Caller.Parent.Parent
-    Set planilhaDados = wb.Worksheets(planilha_dados)
+    Set planilhaDados = Application.Caller.Parent.Parent.Worksheets(planilha_dados)
     If planilhaDados Is Nothing Then
         BuscarInformacoesAcumuladas = "Aba não encontrada"
         Exit Function

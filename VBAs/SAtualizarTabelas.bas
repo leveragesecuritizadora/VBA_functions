@@ -42,7 +42,7 @@ Sub AtualizarTabelas(emissao_id As Integer)
         sql = Replace(sql, "NULL", emissao_id)
 
 
-        nomeBase = Replace(arquivosConsultas(i), ".sql", "")
+        nomeBase = Trim(Replace(arquivosConsultas(i), ".sql", ""))
         
         Debug.Print "Consulta: "nomeBase
 
