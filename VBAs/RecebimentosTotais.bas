@@ -5,7 +5,6 @@ Function PreencherRecebimentosTotais( _
 ) As Variant
 
    PrintIniFuncao("R. Totais")
-   de
-    PreencherRecebimentosTotais = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 5, Array(unidade))
+   PreencherRecebimentosTotais = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 5, Array(unidade))
 
 End Function

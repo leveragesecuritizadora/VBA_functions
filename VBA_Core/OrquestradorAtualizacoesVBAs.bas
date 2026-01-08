@@ -63,7 +63,7 @@ Private Sub BaixarModulosViaManifest()
 
     ' Debug.Print "Dentro BaixarModulosViaManifest"
 
-    baseUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/"
+    baseUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/emissao_unica/"
     urlManifest = baseUrl & "manifest.txt"
     pastaTemp = Environ("TEMP") & "\vba\"
 

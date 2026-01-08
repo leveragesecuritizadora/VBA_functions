@@ -15,7 +15,7 @@ Sub AtualizarTabelas(emissao_id As Integer)
 
     LimparTerminal "ATUALIZANDO TABELASSSSS"
 
-    baseRepoUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/main/"
+    baseRepoUrl = "https://raw.githubusercontent.com/leveragesecuritizadora/VBA_functions/emissao_unica/"
 
     ' conec BD
     Set conn = CreateObject("ADODB.Connection")
