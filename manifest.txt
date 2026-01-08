@@ -44,12 +44,15 @@ VBAs/SaldoFD.bas
 VBAs/SaldoFR.bas
 VBAs/SaldoMinFD.bas
 VBAs/SaldoMinFR.bas
+VBAs/SApagarModulos.bas
 VBAs/SAtualizarModulos.bas
 VBAs/SAtualizarTabelas.bas
 VBAs/SBaixarArquivo.bas
+VBAs/SBaixarModulosViaManifest.bas
 VBAs/SBaixarTexto.bas
 VBAs/SCabecalhoDaConsulta.bas
 VBAs/SCriarBotaoComMacro.bas
+VBAs/SImportarModulos.bas
 VBAs/SLimparTerminal.bas
 VBAs/SMeuPrint.bas
 VBAs/SPrintIniFuncao.bas
