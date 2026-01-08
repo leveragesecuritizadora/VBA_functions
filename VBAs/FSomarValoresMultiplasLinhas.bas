@@ -1,4 +1,3 @@
-Attribute VB_Name = "FSomarValoresMultiplasLinhas"
 Function SomarValoresMultiplasLinhas( _
     mes_offset As Variant, _
     coluna_data As Integer, _
@@ -49,12 +48,12 @@ Function SomarValoresMultiplasLinhas( _
     End If
 
     For Each cel In planilhaDados.Range("A1:A" &  planilhaDados.Cells(planilhaDados.Rows.Count, "A").End(xlUp).Row)
-        ' Debug.print "----"
-        ' Debug.print "Buscado: " string_busca 
-        ' Debug.print "Val atual: " cel.Value
+        Debug.print "----"
+        Debug.print "Buscado: " string_busca 
+        Debug.print "Val atual: " cel.Value
         If CStr(cel.Value) LIKE string_busca Then
             If IsNumeric(planilhaDados.Cells(cel.Row, coluna_dados).Value) Then
-                ' Debug.Print "Bateu, somando"
+                Debug.Print "Bateu, somando"
                 somador = somador + planilhaDados.Cells(cel.Row, coluna_dados).Value
             End If
         End If
@@ -69,5 +68,7 @@ Function SomarValoresMultiplasLinhas( _
     End If
 
     SomarValoresMultiplasLinhas = resultado
+    
+    ' Debug.Print "testefinal " & SomarValoresMultiplasLinhas
 
 End Function

@@ -14,8 +14,11 @@ def update_manifest():
                 bas_files.append(relative_path.replace('\\', '/')) # Use forward slashes for consistency
 
     with open(manifest_path, 'w') as f:
-        for bas_file in bas_files:
-            f.write(bas_file + '\n')
+        for i, bas_file in enumerate(bas_files):
+            if i == len(bas_file) - 1:
+                f.write(bas_file)
+            else:
+                f.write(bas_file + '\n')
 
     print(f"Updated '{manifest_path}' with {len(bas_files)} .bas file paths from '{vbas_dir}'.")
 

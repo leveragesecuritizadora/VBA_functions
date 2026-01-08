@@ -1,5 +1,4 @@
 Attribute VB_Name = "ProporcaoUnidade"
-Attribute VB_Name = "ProporcaoUnidade"
 Public Function PreencherProporcaoUnidade( _
     nome_unidade As String, _
     Optional mes_offset As Variant = -1, _
@@ -12,8 +11,8 @@ Public Function PreencherProporcaoUnidade( _
     recebimentosTotais = PreencherRecebimentosTotaisTU()
     recebimentoUnidade = PreencherRecebimentosTotais(nome_unidade)
 
-    Debug.Print "recebimentosTotais: "; recebimentosTotais
-    Debug.Print "recebimentoUnidade: "; recebimentoUnidade
+    Debug.Print "recebimentosTotais: "; SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 5, Array("*"))
+    Debug.Print "recebimentoUnidade: "; ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 5, Array(nome_unidade))
 
     PreencherProporcaoUnidade = recebimentoUnidade/recebimentosTotais
 End Function
