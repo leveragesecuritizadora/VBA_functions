@@ -183,7 +183,7 @@ Private Sub OrquestradorAutomacaoPlanilha()
     LimparTerminal "Automação Planilha - ID: " & id
 
     CriarBotaoComMacro "Atualizar Dados", "AtualizarTabelas|" & id, "Ordem de Pagamento Consolidado", "Azul", 250, 50
-    CriarBotaoComMacro "Atualizar Módulos", "AtualizarModulos", "Ordem de Pagamento Consolidado", "Verde", 350, 50
+    CriarBotaoComMacro "Atualizar Módulos", "RodarBootloader", "Ordem de Pagamento Consolidado", "Verde", 350, 50
 
     AtualizarTabelas(id)
 End Sub
