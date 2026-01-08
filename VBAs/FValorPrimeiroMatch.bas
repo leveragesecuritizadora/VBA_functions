@@ -10,7 +10,6 @@ Function ValorPrimeiroMatch( _
     Dim wsAtual As Worksheet
     Dim celAtual As Range
     Dim dataBase As Variant
-    Dim resultado As Variant
     Dim string_busca as Variant
     Dim planilhaDados As Worksheet
     Dim cel As Range
@@ -47,20 +46,18 @@ Function ValorPrimeiroMatch( _
 
     linhaEncontrada = Application.Match(string_busca, planilhaDados.Range("A:A"), 0)
 
-    Debug.Print "ValorPrimeiroMatch - ID: "; string_busca
-    Debug.Print "ValorPrimeiroMatch - LE: "; linhaEncontrada
-
-
     If IsError(linhaEncontrada) Then
-        ValorPrimeiroMatch = False
-    End If
-
-    If resultado = False Then
-       ' Debug.Print "Erro"
+        Debug.print "ValorPrimeiroMatch - Linha não encontrada"
         ValorPrimeiroMatch = 0
         Exit Function
+    Else
+        Debug.print "Linha encontrada"
+        Debug.Print "ValorPrimeiroMatch - ID: "; string_busca
+        Debug.Print "ValorPrimeiroMatch - LE: "; linhaEncontrada
     End If
 
-    ValorPrimeiroMatch = resultado
+    Debug.print planilhaDados.Cells(linhaEncontrada, coluna_dados).Value
+
+    ValorPrimeiroMatch = planilhaDados.Cells(linhaEncontrada, coluna_dados).Value
 
 End Function
