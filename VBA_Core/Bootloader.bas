@@ -9,6 +9,8 @@ Public Sub RodarBootloader()
     pastaTemp = Environ("TEMP") & "\vba\"
     caminhoCore = pastaTemp & "SOrquestradorAtualizacoesVBAs.bas"
 
+    Call ApagarModulos
+
     If Dir(pastaTemp, vbDirectory) = "" Then MkDir pastaTemp
 
     If Not BaixarArquivo(url, caminhoCore) Then
