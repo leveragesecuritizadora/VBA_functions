@@ -5,7 +5,7 @@ Function PreencherSaldoFD( _
 ) As Variant
 
     ' PrintIniFuncao("SaldoFD")
-    PreencherSaldoFD = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFundos", 2)
+    PreencherSaldoFD = ValorPrimeiroMatch(mes_offset, coluna_data, "InfosFundos", 2)
 
 
 End Function
