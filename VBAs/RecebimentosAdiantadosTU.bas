@@ -4,7 +4,8 @@ Function PreencherRecebimentosAdiantadosTU( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-   PrintIniFuncao("R. Adiantados TU")
+'    PrintIniFuncao("R. Adiantados TU")
+   unidade = NormalizarTexto(unidade)
     PreencherRecebimentosAdiantadosTU = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Recebimentos", 2, Array("*"))
 
 End Function

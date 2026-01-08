@@ -46,7 +46,6 @@ VBAs/SBaixarArquivo.bas
 VBAs/SBaixarModulosViaManifest.bas
 VBAs/SBaixarTexto.bas
 VBAs/SCabecalhoDaConsulta.bas
-VBAs/SCriarBotaoComMacro.bas
 VBAs/SImportarModulos.bas
 VBAs/SLimparTerminal.bas
 VBAs/SSanitizarXLSM.bas
