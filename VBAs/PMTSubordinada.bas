@@ -5,7 +5,7 @@ Public Function PreencherPMTSubordinada( _
 ) As Variant
 
     ' Debug.Print Now() & " ======================PMTSub"
-    PreencherPMTSubordinada = tiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array("*", "subordinada")) 
+    PreencherPMTSubordinada = SomarValoresMultiplasLinhas(mes_offset, coluna_data, "Juros", 7, Array("*", "subordinada")) 
 
 End Function
 
