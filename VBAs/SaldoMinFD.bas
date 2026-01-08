@@ -4,6 +4,6 @@ Function PreencherSaldoMinFD( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    PreencherSaldoMinFD = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFundos", 3)
+    PreencherSaldoMinFD = ValorPrimeiroMatch(mes_offset, coluna_data, "InfosFundos", 3)
 
 End Function

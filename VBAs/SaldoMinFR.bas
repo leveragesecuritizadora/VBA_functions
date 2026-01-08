@@ -5,6 +5,6 @@ Function PreencherSaldoMinFR( _
 ) As Variant
 
    ' PrintIniFuncao("Sal min FR")
-    PreencherSaldoMinFR = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFundos", 6)
+    PreencherSaldoMinFR = ValorPrimeiroMatch(mes_offset, coluna_data, "InfosFundos", 6)
 
 End Function
