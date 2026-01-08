@@ -6,6 +6,6 @@ Public Function PreencherAMEXSerie( _
 ) As Variant
 
     ' Debug.Print "PreencherAMEXSerie"
-    PreencherAMEXSerie = ValorPrimeiroMatch(mes_offset, coluna_data, "Juros", 5, Array(n_serie, "*"))
+    PreencherAMEXSerie = ValorPrimeiroMatch(mes_offset, coluna_data, "Juros", 6, Array(n_serie, "*"))
 
 End Function

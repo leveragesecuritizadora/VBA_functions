@@ -24,7 +24,9 @@ VBAs/JurosSerie.bas
 VBAs/JurosSubordinada.bas
 VBAs/LerConfig.bas
 VBAs/PMTSenior.bas
+VBAs/PMTSeniorSerie.bas
 VBAs/PMTSubordinada.bas
+VBAs/PMTSubordinadoSerie.bas
 VBAs/PUCorrigidoSenior.bas
 VBAs/PUCorrigidoSubordinada.bas
 VBAs/RecebimentosAdiantados.bas
