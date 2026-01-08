@@ -4,7 +4,7 @@ Function NormalizarTexto(ByVal texto As String) As String
     Dim semAcento As String
     Dim i As Long
 
-    comAcento = "ц║ц═ц╒цёц╓ц╘ц╗ц╙ц╚ц╜ц╛ц╝ц╞цЁц╡ц╢ц╣ц╤ц╨ц╧ц╩ц╪ц╖ц│ц─ц┌ц┐ц└ц┴ц┬ц┼ц▀ц█ц▄ц▌ц▐ц⌠ц▓ц■ц∙ц√ц ц≥ц⌡ц°ц┤"
+     comAcento = "АЮБЦДИХЙКМЛНОСРТУЖЗЫШЭГаюбцдихйкмлносртужзышэг"
     semAcento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC"
 
     ' Remove acentos
