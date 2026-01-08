@@ -6,7 +6,7 @@ Function PreencherRecebimentosAdiantados( _
 ) As Variant
 
    PrintIniFuncao("R. Adiantado")
-    PreencherRecebimentosAdiantados = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "Recebimentos", 2, unidade)
+    PreencherRecebimentosAdiantados = ValorPrimeiroMatch(mes_offset, coluna_data, "Recebimentos", 2, Array(unidade))
 
 End Function
 
