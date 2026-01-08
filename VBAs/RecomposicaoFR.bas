@@ -4,6 +4,6 @@ Function PreencherRecomposicaoFR( _
     Optional coluna_data As Integer = 2 _
 ) As Variant
 
-    PreencherRecomposicaoFR = ImplementacaoBuscarInfosEmissao(mes_offset, coluna_data, "InfosFundos", 7)
+    PreencherRecomposicaoFR = ValorPrimeiroMatch(mes_offset, coluna_data, "InfosFundos", 7)
 
 End Function
