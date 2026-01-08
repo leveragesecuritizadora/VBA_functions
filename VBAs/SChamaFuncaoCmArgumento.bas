@@ -6,17 +6,28 @@ Sub ChamaFuncaoCmArgumento()
     Dim funcao As String
 
     nomeBotao = Application.Caller
-    partes = Split(nomeBotao, "|")
 
-    funcao = partes(0)
-    parametro = CInt(partes(1))
+    Debug.Print "nomeBotao: "; nomeBotao
 
-    Debug.Print funcao, parametro
+    If nomeBotao LIKE "*|*" Then
 
-    If funcao = "AtualizarTabelas" Then
-        AtualizarTabelas(parametro)
+        partes = Split(nomeBotao, "|")
+
+        funcao = partes(0)
+        parametro = CInt(partes(1))
+
+        Debug.Print funcao, parametro
+
+        If funcao = "AtualizarTabelas" Then
+            AtualizarTabelas(parametro)
+        End If
+    
+    Else
+
+        If nomeBotao = "AtualizarModulos" Then
+            Debug.Print "AtualizarModulos()"
+        End If
+    
     End If
-
-
-
+        
 End Sub
