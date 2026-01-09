@@ -26,6 +26,8 @@ Function IDEmissao() As Variant
     emissao = Replace(emissao, ")", "")
     emissao = Trim(Replace(emissao, "xlsx", ""))
 
+    LimparTerminal "Buscando id da emissão: " & emissao
+
     ' =========================
     ' 2. Monta SQL
     ' =========================
@@ -53,7 +55,7 @@ Function IDEmissao() As Variant
     ' =========================
     ' 5. Retorna o valor
     ' =========================
-    If Not rs.EOF Then
+    If (Not rs.EOF) And (Not IsNull(rs.Fields(0).Value)) Then
         IDEmissao = CLng(rs.Fields(0).Value)
     Else
         MsgBox Now & " Emissão " & emissao & " não encontrada no servidor"
