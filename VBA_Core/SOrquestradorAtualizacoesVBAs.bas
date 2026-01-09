@@ -196,7 +196,11 @@ Private Sub OrquestradorAutomacaoPlanilha()
     SOrquestradorAtualizacoesVBAs.CriarBotaoComMacro "Atualizar Dados", "AtualizarTabelas|" & id, "Ordem de Pagamento Consolidado", "Azul", 250, 50
     SOrquestradorAtualizacoesVBAs.CriarBotaoComMacro "Atualizar Módulos", "RodarBootloader", "Ordem de Pagamento Consolidado", "Verde", 350, 50
 
-    AtualizarTabelas(id)
+    If id Then
+        AtualizarTabelas(id)
+    Else
+        LimparTerminal "emissão não encontrada"
+    End If
 End Sub
 
 Private Sub LimparTerminal(mensagem As String) 
