@@ -1,6 +1,6 @@
 Attribute VB_Name = "FIDEmissao"
 
-Function IDEmissao() As Long
+Function IDEmissao() As Variant
 
     Dim conn As Object
     Dim rs As Object
@@ -21,6 +21,9 @@ Function IDEmissao() As Long
     emissao = Replace(emissao, "automatizada", "")
     emissao = Replace(emissao, "vba", "")
     emissao = Replace(emissao, "xlsm", "")
+    emissao = Replace(emissao, "cra", "")
+    emissao = Replace(emissao, "(", "")
+    emissao = Replace(emissao, ")", "")
     emissao = Trim(Replace(emissao, "xlsx", ""))
 
     ' =========================
@@ -53,7 +56,8 @@ Function IDEmissao() As Long
     If Not rs.EOF Then
         IDEmissao = CLng(rs.Fields(0).Value)
     Else
-        IDEmissao = 0
+        MsgBox Now & " Emissão "&emissao&" não encontrada no servidor"
+        IDEmissao = False
     End If
 
     ' =========================
