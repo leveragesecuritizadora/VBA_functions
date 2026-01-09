@@ -56,7 +56,7 @@ Function IDEmissao() As Variant
     If Not rs.EOF Then
         IDEmissao = CLng(rs.Fields(0).Value)
     Else
-        MsgBox Now & " Emissão "&emissao&" não encontrada no servidor"
+        MsgBox Now & " Emissão " & emissao & " não encontrada no servidor"
         IDEmissao = False
     End If
 
